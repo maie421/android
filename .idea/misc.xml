@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.347" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.347" />
+        <entry key="app/src/main/res/layout-w936dp/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4489795918367347" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.25" />
@@ -22,7 +23,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.37604166666666666" />
+        <option name="scale" value="0.4489795918367347" />
       </ProjectState>
     </option>
   </component>
