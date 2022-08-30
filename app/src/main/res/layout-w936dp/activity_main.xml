@@ -88,7 +88,7 @@
         android:text="7.0%"
         android:textColor="@color/black"
         tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="480dp" />
+        tools:layout_editor_absoluteY="489dp" />
 
     <TextView
         android:id="@+id/textView13"
@@ -106,5 +106,5 @@
         android:text="4,650원"
         android:textColor="@color/black"
         tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="481dp" />
+        tools:layout_editor_absoluteY="490dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
