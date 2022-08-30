@@ -113,11 +113,9 @@
         android:layout_width="141dp"
         android:layout_height="21dp"
         android:layout_marginStart="53dp"
-        android:layout_marginEnd="217dp"
         android:text="배달의민족 5천원 쿠폰"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
         tools:ignore="MissingConstraints" />
@@ -136,15 +134,15 @@
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="100dp"
-        android:layout_height="19dp"
+        android:layout_width="56dp"
+        android:layout_height="15dp"
         android:layout_marginStart="53dp"
-        android:layout_marginEnd="258dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="361dp"
         android:text="5,000원"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12"
         tools:ignore="MissingConstraints" />
@@ -160,5 +158,14 @@
         app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView12" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="24dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
