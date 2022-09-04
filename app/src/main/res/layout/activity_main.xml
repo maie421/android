@@ -32,13 +32,14 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:baselineAligned="false">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:baselineAligned="false"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputLayout">
 
-        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <LinearLayout
@@ -46,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search"
@@ -90,6 +92,7 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         tools:ignore="MissingConstraints">
@@ -100,7 +103,6 @@
             android:layout_width="150dp"
             android:layout_height="130dp"
             tools:srcCompat="@tools:sample/avatars" />
-
 
         <TextView
             android:id="@+id/textView9"
@@ -134,13 +136,16 @@
                 android:layout_weight="1"
                 android:text="5,000원" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView11"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="4,650원" />
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="4,650원" />
+    </LinearLayout>
     </LinearLayout>
 
 

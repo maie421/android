@@ -86,6 +86,7 @@
                         android:id="@+id/imageButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@color/white"
                         app:srcCompat="@android:drawable/btn_star_big_on"
                         tools:layout_editor_absoluteX="319dp"
                         tools:layout_editor_absoluteY="128dp" />
