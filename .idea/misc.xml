@@ -9,12 +9,13 @@
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_join.xml" value="0.3061594202898551" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/activity_my_page.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/activity_product.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_search.xml" value="0.5297372060857538" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.48409405255878285" />
+        <entry key="app/src/main/res/layout/activity_my_page.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_product.xml" value="0.231722958529286" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_table.xml" value="0.3619791666666667" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3765" />
       </map>
     </option>
   </component>
@@ -27,7 +28,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.37604166666666666" />
+        <option name="scale" value="0.5834363411619283" />
       </ProjectState>
     </option>
   </component>
