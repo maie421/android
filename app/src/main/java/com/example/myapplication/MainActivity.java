@@ -24,12 +24,8 @@ public class MainActivity extends AppCompatActivity {
         init(); //객체 정의
         SettingListener(); //리스너 등록
 
-        //맨 처음 시작할 탭 설정
-        bottomNavigationView.setSelectedItemId(R.id.home);
-
         searchView.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-            finishAffinity();
             startActivity(intent);
         });
     }
@@ -49,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()) {
+                case R.id.home: {
+                    return true;
+                }
                 case R.id.menu_search: {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);
@@ -68,5 +67,12 @@ public class MainActivity extends AppCompatActivity {
 
             return false;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //맨 처음 시작할 탭 설정
+        bottomNavigationView.setSelectedItemId(R.id.home);
     }
 }
