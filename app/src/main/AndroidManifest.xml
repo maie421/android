@@ -27,9 +27,11 @@
             android:exported="false" />
         <activity
             android:name=".MyPageActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".ProductActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".JoinActivity"
@@ -39,6 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".SearchActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

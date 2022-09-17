@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         SettingListener(); //리스너 등록
 
         //맨 처음 시작할 탭 설정
-        bottomNavigationView.setSelectedItemId(R.id.home);
+//        bottomNavigationView.setSelectedItemId(R.id.home);
 
     }
 
