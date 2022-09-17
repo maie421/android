@@ -19,9 +19,11 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.074"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintVertical_bias="0.074" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -67,4 +69,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/menu_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:itemIconTint="@drawable/menu_item_color"
+        app:itemTextColor="@drawable/menu_item_color"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/main_menu_bottom"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

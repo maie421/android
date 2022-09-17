@@ -29,12 +29,6 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".TableActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TestActivity"
-            android:exported="false" />
-        <activity
             android:name=".SearchActivity"
             android:exported="false" />
         <activity
