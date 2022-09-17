@@ -33,19 +33,23 @@ public class SearchActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new SearchActivity.TabSelectedListener());
     }
 
-    class TabSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener{
+    class TabSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.home: {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.addFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    return true;
+                }
+                case R.id.menu_search: {
                     return true;
                 }
                 case R.id.add: {
                     Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
                     startActivity(intent);
-//                    finish();
                     return true;
                 }
                 case R.id.my_page: {

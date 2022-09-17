@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         SettingListener(); //리스너 등록
 
         //맨 처음 시작할 탭 설정
-//        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
     }
 
@@ -41,11 +41,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()) {
-//                case R.id.home: {
-//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    startActivity(intent);
-//                    return true;
-//                }
                 case R.id.menu_search: {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(intent);
