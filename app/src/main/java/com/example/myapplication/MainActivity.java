@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //화면에 나타나 있고 싱행중일때
+    //화면에 표시되기 직전
     @Override
     protected void onStart() {
         super.onStart();
