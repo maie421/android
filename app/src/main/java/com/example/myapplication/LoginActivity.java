@@ -10,14 +10,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
+    EditText email;
+    EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        EditText email = findViewById(R.id.email);
-        EditText password = findViewById(R.id.password);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
 
         Button loginBtn = findViewById(R.id.login);
 
@@ -37,5 +39,12 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra("id",email.getText().toString()); /*송신*/
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        email.setText("");
+        password.setText("");
     }
 }

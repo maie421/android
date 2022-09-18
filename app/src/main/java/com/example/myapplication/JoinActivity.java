@@ -10,15 +10,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class JoinActivity extends AppCompatActivity {
+    EditText email;
+    EditText password;
+    EditText passwordTmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
-        EditText email = findViewById(R.id.email);
-        EditText password = findViewById(R.id.password);
-        EditText passwordTmp = findViewById(R.id.passwordTmp);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        passwordTmp = findViewById(R.id.passwordTmp);
 
         Button joinBtn = findViewById(R.id.joinBtn);
 
@@ -38,5 +41,13 @@ public class JoinActivity extends AppCompatActivity {
             intent.putExtra("id",email.getText().toString()); /*송신*/
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        email.setText("");
+        password.setText("");
+        passwordTmp.setText("");
     }
 }
