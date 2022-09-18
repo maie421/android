@@ -39,7 +39,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="23dp"
         android:text="간편 회원 가입"
-        app:layout_constraintBottom_toTopOf="@+id/main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +69,5 @@
         android:text="로그인"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/main" />
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
