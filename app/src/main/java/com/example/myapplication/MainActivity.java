@@ -55,11 +55,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 case R.id.menu_search: {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }
                 case R.id.add: {
                     Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }

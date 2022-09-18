@@ -50,16 +50,19 @@ public class MyPageActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.addFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }
                 case R.id.menu_search: {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }
                 case R.id.add: {
                     Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }

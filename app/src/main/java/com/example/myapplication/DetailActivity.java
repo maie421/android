@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DetailActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,9 @@ public class DetailActivity extends AppCompatActivity {
     }
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
+        Intent intent = getIntent(); /*데이터 수신*/
+
+        id = intent.getExtras().getString("id");
     }
 
     private void SettingListener() {
@@ -39,11 +43,13 @@ public class DetailActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.addFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }
                 case R.id.menu_search: {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }
@@ -52,6 +58,7 @@ public class DetailActivity extends AppCompatActivity {
                 }
                 case R.id.my_page: {
                     Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }

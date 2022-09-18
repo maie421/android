@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProductActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,9 @@ public class ProductActivity extends AppCompatActivity {
 
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
+        Intent intent = getIntent(); /*데이터 수신*/
+
+        id = intent.getExtras().getString("id");
     }
 
     private void SettingListener() {
@@ -40,6 +44,7 @@ public class ProductActivity extends AppCompatActivity {
             switch (menuItem.getItemId()) {
                 case R.id.home: {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("id",id); /*송신*/;
                     intent.addFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
@@ -47,6 +52,7 @@ public class ProductActivity extends AppCompatActivity {
                 }
                 case R.id.menu_search: {
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }
@@ -55,6 +61,7 @@ public class ProductActivity extends AppCompatActivity {
                 }
                 case R.id.my_page: {
                     Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }
