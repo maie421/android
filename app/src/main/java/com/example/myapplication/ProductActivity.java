@@ -52,7 +52,6 @@ public class ProductActivity extends AppCompatActivity {
     private void ClickBtn(){
         submitBtn.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            Log.d("가나다",title.getText().toString());
             intent.putExtra("id",id);
             intent.putExtra("title", title.getText().toString());
             intent.putExtra("company", company.getText().toString());

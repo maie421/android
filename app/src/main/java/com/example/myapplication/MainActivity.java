@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
     //화면에 나타나 있고 싱행중일때
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
+        super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
