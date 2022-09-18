@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.add: {
                     Intent intent = new Intent(getApplicationContext(), ProductActivity.class);
                     intent.putExtra("id",id); /*송신*/
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                     return true;
                 }
                 case R.id.my_page: {
@@ -94,13 +95,15 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
+
     @Override
-    protected void onNewIntent(Intent intent) {
-        if (intent.hasExtra("title")) {
-            title = intent.getExtras().getString("title");
-            company = intent.getExtras().getString("company");
-            price = intent.getExtras().getString("price");
-            salePrice = intent.getExtras().getString("salePrice");
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            title = data.getExtras().getString("title");
+            company = data.getExtras().getString("company");
+            price = data.getExtras().getString("price");
+            salePrice = data.getExtras().getString("salePrice");
 
             titleView = findViewById(R.id.title);
             companyView = findViewById(R.id.company);
@@ -112,6 +115,5 @@ public class MainActivity extends AppCompatActivity {
             priceView.setText(price);
             salePriceView.setText(salePrice);
         }
-        super.onNewIntent(intent);
     }
 }

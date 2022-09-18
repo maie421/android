@@ -57,9 +57,10 @@ public class ProductActivity extends AppCompatActivity {
             intent.putExtra("company", company.getText().toString());
             intent.putExtra("price", price.getText().toString());
             intent.putExtra("salePrice", salePrice.getText().toString());
-            intent.addFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
-            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+//            intent.addFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
+//            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+            setResult(RESULT_OK,intent);
+            finish();
         });
     }
 
