@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //화면에 나타나 있고 싱행중일때
     @Override
     protected void onResume() {
         super.onResume();
-        //맨 처음 시작할 탭 설정
         bottomNavigationView.setSelectedItemId(R.id.home);
     }
 }
