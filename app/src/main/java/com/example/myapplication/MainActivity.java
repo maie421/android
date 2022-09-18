@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -16,6 +18,15 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     View searchView;
     String id;
+    String title;
+    String company;
+    String price;
+    String salePrice;
+
+    TextView titleView;
+    TextView companyView;
+    TextView priceView;
+    TextView salePriceView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
 
         Intent intent = getIntent(); /*데이터 수신*/
-
         id = intent.getExtras().getString("id");
     }
 
@@ -82,5 +92,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         bottomNavigationView.setSelectedItemId(R.id.home);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        if (intent.hasExtra("title")) {
+            title = intent.getExtras().getString("title");
+            company = intent.getExtras().getString("company");
+            price = intent.getExtras().getString("price");
+            salePrice = intent.getExtras().getString("salePrice");
+
+            titleView = findViewById(R.id.title);
+            companyView = findViewById(R.id.company);
+            priceView = findViewById(R.id.price);
+            salePriceView = findViewById(R.id.salePrice);
+
+            titleView.setText(title);
+            companyView.setText(company);
+            priceView.setText(price);
+            salePriceView.setText(salePrice);
+        }
+        super.onNewIntent(intent);
     }
 }

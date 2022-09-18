@@ -5,12 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProductActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    TextView title;
+    TextView company;
+    TextView price;
+    TextView salePrice;
+    Button submitBtn;
     String id;
 
     @Override
@@ -20,6 +29,7 @@ public class ProductActivity extends AppCompatActivity {
 
         init(); //객체 정의
         SettingListener(); //리스너 등록
+        ClickBtn();
 
         //맨 처음 시작할 탭 설정
         bottomNavigationView.setSelectedItemId(R.id.add);
@@ -28,9 +38,30 @@ public class ProductActivity extends AppCompatActivity {
 
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
+        title = findViewById(R.id.title);
+        company = findViewById(R.id.company);
+        price = findViewById(R.id.price);
+        salePrice = findViewById(R.id.salePrice);
+        submitBtn = findViewById(R.id.submit);
+
         Intent intent = getIntent(); /*데이터 수신*/
 
         id = intent.getExtras().getString("id");
+    }
+
+    private void ClickBtn(){
+        submitBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Log.d("가나다",title.getText().toString());
+            intent.putExtra("id",id);
+            intent.putExtra("title", title.getText().toString());
+            intent.putExtra("company", company.getText().toString());
+            intent.putExtra("price", price.getText().toString());
+            intent.putExtra("salePrice", salePrice.getText().toString());
+            intent.addFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
     }
 
     private void SettingListener() {

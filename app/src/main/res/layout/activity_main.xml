@@ -93,7 +93,7 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/company"
         android:layout_width="138dp"
         android:layout_height="19dp"
         android:layout_marginStart="52dp"
@@ -101,7 +101,7 @@
         android:layout_marginEnd="221dp"
         android:text="배달의 민족"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintBottom_toTopOf="@+id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/title"
         android:layout_width="141dp"
         android:layout_height="21dp"
         android:layout_marginStart="52dp"
@@ -117,7 +117,7 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/company"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -129,13 +129,13 @@
         android:layout_marginEnd="305dp"
         android:text="7.0%"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintBottom_toTopOf="@+id/salePrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/price"
         android:layout_width="56dp"
         android:layout_height="15dp"
         android:layout_marginStart="53dp"
@@ -150,7 +150,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/salePrice"
         android:layout_width="85dp"
         android:layout_height="21dp"
         android:layout_marginStart="52dp"
@@ -159,7 +159,7 @@
         android:layout_marginBottom="6dp"
         android:text="4,650원"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintBottom_toTopOf="@+id/price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
