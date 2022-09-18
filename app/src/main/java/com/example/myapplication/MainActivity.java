@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     View searchView;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         searchView = findViewById(R.id.searchView);
+
+        Intent intent = getIntent(); /*데이터 수신*/
+
+        id = intent.getExtras().getString("id");
     }
 
     private void SettingListener() {
@@ -60,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 case R.id.my_page: {
                     Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
+                    intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
                     return true;
                 }

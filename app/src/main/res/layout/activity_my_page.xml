@@ -7,49 +7,48 @@
     tools:context=".MyPageActivity">
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="224dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="10dp"
         android:text="홍길동 주인님"
         android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.51" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="292dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="14dp"
         android:text="반가워요."
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="381dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="11dp"
         android:text="0"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
@@ -57,8 +56,9 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="57dp"
         android:text="즐겨찾기"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
@@ -70,7 +70,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="229dp"
+        app:layout_constraintBottom_toTopOf="@+id/menu_bottom_navigation"
+        app:layout_constraintEnd_toStartOf="@+id/textView20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16"
         tools:srcCompat="@tools:sample/avatars" />
@@ -79,22 +83,26 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="261dp"
+        android:layout_marginEnd="183dp"
         android:text="배달의민족"
         app:layout_constraintBottom_toTopOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="169dp"
+        android:layout_marginBottom="36dp"
         android:text="바닐라스무디"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/textView20"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -102,35 +110,42 @@
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="192dp"
         android:text="정가 5300원"
-        app:layout_constraintEnd_toStartOf="@+id/textView20"
+        app:layout_constraintBottom_toTopOf="@+id/menu_bottom_navigation"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="312dp"
-        android:layout_marginEnd="9dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="116dp"
         android:text="5000원"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.559" />
 
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="289dp"
-        app:layout_constraintStart_toEndOf="@+id/textView20"
+        android:layout_marginTop="358dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="192dp"
+        app:layout_constraintBottom_toTopOf="@+id/menu_bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -138,9 +153,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_marginBottom="1dp"
         app:itemIconTint="@drawable/menu_item_color"
         app:itemTextColor="@drawable/menu_item_color"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/main_menu_bottom"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/main_menu_bottom" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MyPageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,13 @@ public class MyPageActivity extends AppCompatActivity {
 
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
+
+        Intent intent = getIntent(); /*데이터 수신*/
+
+        id = intent.getExtras().getString("id");
+
+        TextView title = findViewById(R.id.title);
+        title.setText(id + " 주인님");
     }
 
     private void SettingListener() {

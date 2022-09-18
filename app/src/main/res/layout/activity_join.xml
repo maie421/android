@@ -16,14 +16,14 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.074" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/email"
         android:layout_width="254dp"
         android:layout_height="41dp"
         android:layout_marginStart="94dp"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/password"
         android:layout_width="259dp"
         android:layout_height="42dp"
         android:layout_marginStart="89dp"
@@ -47,15 +47,15 @@
         android:ems="10"
         android:hint="비밀번호"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword3"
+        app:layout_constraintBottom_toTopOf="@+id/passwordTmp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.133" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/passwordTmp"
         android:layout_width="259dp"
         android:layout_height="42dp"
         android:layout_marginStart="94dp"
@@ -65,14 +65,14 @@
         android:ems="10"
         android:hint="비밀번호 확인"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/joinBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/joinBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
@@ -84,6 +84,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordTmp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
