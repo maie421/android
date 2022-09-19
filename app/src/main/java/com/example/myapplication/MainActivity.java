@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     TextView companyView;
     TextView priceView;
     TextView salePriceView;
+    ImageView imageview;
+
+    byte[] byteArray;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,15 +112,21 @@ public class MainActivity extends AppCompatActivity {
             price = data.getExtras().getString("price");
             salePrice = data.getExtras().getString("salePrice");
 
+            byteArray = data.getExtras().getByteArray("image");
+            bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+
             titleView = findViewById(R.id.title);
             companyView = findViewById(R.id.company);
             priceView = findViewById(R.id.price);
             salePriceView = findViewById(R.id.salePrice);
+            imageview = findViewById(R.id.imageView);
 
             titleView.setText(title);
             companyView.setText(company);
             priceView.setText(price);
             salePriceView.setText(salePrice);
+
+            imageview.setImageBitmap(bitmap);
         }
     }
 }
