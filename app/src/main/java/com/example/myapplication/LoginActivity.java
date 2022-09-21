@@ -40,11 +40,4 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        email.setText("");
-        password.setText("");
-    }
 }

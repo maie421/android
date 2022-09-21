@@ -48,12 +48,30 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
             startActivity(intent);
         });
+
+        imageview.setOnClickListener(view -> {
+            Log.d("테222스트","ㅁㅇㄴㄹㅇㄹ");
+            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+            intent.putExtra("id",id);
+            intent.putExtra("title", titleView.getText().toString());
+            intent.putExtra("company", companyView.getText().toString());
+            intent.putExtra("price", priceView.getText().toString());
+            intent.putExtra("salePrice", salePriceView.getText().toString());
+            intent.putExtra("image", byteArray);
+
+            startActivity(intent);
+        });
     }
 
 
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         searchView = findViewById(R.id.searchView);
+        imageview = findViewById(R.id.imageView);
+        titleView = findViewById(R.id.title);
+        companyView = findViewById(R.id.company);
+        priceView = findViewById(R.id.price);
+        salePriceView = findViewById(R.id.salePrice);
 
         Intent intent = getIntent(); /*데이터 수신*/
         id = intent.getExtras().getString("id");

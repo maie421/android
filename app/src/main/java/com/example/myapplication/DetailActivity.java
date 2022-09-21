@@ -4,66 +4,75 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DetailActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     String id;
+    String title;
+    String company;
+    String price;
+    String salePrice;
+
+    byte[] byteArray;
+    Bitmap bitmap;
+
+    TextView titleView;
+    TextView companyView;
+    TextView priceView;
+    TextView salePriceView;
+    ImageView imageview;
+    Button purchaseBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
+        Intent intent;
         init(); //객체 정의
-        SettingListener(); //리스너 등록
 
-        bottomNavigationView.setSelectedItemId(R.id.home);
     }
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         Intent intent = getIntent(); /*데이터 수신*/
 
         id = intent.getExtras().getString("id");
-    }
+        title = intent.getExtras().getString("title");
+        company = intent.getExtras().getString("company");
+        price = intent.getExtras().getString("price");
+        salePrice = intent.getExtras().getString("salePrice");
+        byteArray = intent.getExtras().getByteArray("image");
 
-    private void SettingListener() {
-        //선택 리스너 등록
-        bottomNavigationView.setOnNavigationItemSelectedListener(new DetailActivity.TabSelectedListener());
-    }
+        titleView = findViewById(R.id.title);
+        companyView = findViewById(R.id.company);
+        priceView = findViewById(R.id.price);
+        salePriceView = findViewById(R.id.salePrice);
+        imageview = findViewById(R.id.imageView);
+        purchaseBtn = findViewById(R.id.purchase);
 
-    class TabSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.home: {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("id",id); /*송신*/
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }
-                case R.id.menu_search: {
-                    Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-                    intent.putExtra("id",id); /*송신*/
-                    startActivity(intent);
-                    return true;
-                }
-                case R.id.add: {
-                    return true;
-                }
-                case R.id.my_page: {
-                    Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
-                    intent.putExtra("id",id); /*송신*/
-                    startActivity(intent);
-                    return true;
-                }
-            }
-
-            return false;
+        titleView.setText(title);
+        companyView.setText(company);
+        priceView.setText(price);
+        salePriceView.setText(salePrice);
+        bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        if (bitmap != null){
+            imageview.setImageBitmap(bitmap);
         }
+
+        purchaseBtn.setOnClickListener(view -> {
+            finish();
+        });
     }
+
+
+
 }

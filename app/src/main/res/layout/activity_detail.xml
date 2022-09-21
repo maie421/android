@@ -10,92 +10,90 @@
         android:id="@+id/textView22"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="38dp"
         android:text="기판매"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginEnd="142dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView24"
+        android:id="@+id/imageView"
+        android:layout_width="103dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/company"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/company"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginTop="6dp"
         android:text="스타벅스"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView26"
+        app:layout_constraintBottom_toTopOf="@+id/price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="38dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="34dp"
         android:text="[GIFT] 무료 음료 쿠폰"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
+        app:layout_constraintBottom_toTopOf="@+id/purchase"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        app:layout_constraintTop_toBottomOf="@+id/salePrice" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="87dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="8dp"
         android:text="4,800 원"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView25"
+        app:layout_constraintBottom_toTopOf="@+id/salePrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24" />
+        app:layout_constraintTop_toBottomOf="@+id/company" />
 
-    <Button
-        android:id="@+id/button6"
+    <TextView
+        android:id="@+id/salePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="178dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="23dp"
+        android:text="5,000 원"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price" />
+
+    <Button
+        android:id="@+id/purchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="103dp"
         android:text="구매"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menu_bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:itemIconTint="@drawable/menu_item_color"
-        app:itemTextColor="@drawable/menu_item_color"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/main_menu_bottom"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
