@@ -41,10 +41,9 @@ public class DetailActivity extends AppCompatActivity {
             switch (menuItem.getItemId()) {
                 case R.id.home: {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.addFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 case R.id.menu_search: {

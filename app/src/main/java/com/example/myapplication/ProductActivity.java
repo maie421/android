@@ -120,6 +120,7 @@ public class ProductActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("id",id); /*송신*/;
                     startActivity(intent);
+                    finish();
                     return true;
                 }
                 case R.id.menu_search: {

@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             finishAffinity();
-            intent.putExtra("id",email.getText().toString()); /*송신*/
+            intent.putExtra("id", email.getText().toString()); /*송신*/
             startActivity(intent);
         });
     }
