@@ -63,8 +63,9 @@ public class DetailActivity extends AppCompatActivity {
         companyView.setText(company);
         priceView.setText(price);
         salePriceView.setText(salePrice);
+
+        if (byteArray != null ){
         bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-        if (bitmap != null){
             imageview.setImageBitmap(bitmap);
         }
 
