@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     TextView priceView;
     TextView salePriceView;
     ImageView imageview;
+    ImageView banner;
 
     byte[] byteArray;
     Bitmap bitmap;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         companyView = findViewById(R.id.company);
         priceView = findViewById(R.id.price);
         salePriceView = findViewById(R.id.salePrice);
+        banner = findViewById(R.id.banner);
 
         Intent intent = getIntent(); /*데이터 수신*/
         id = intent.getExtras().getString("id");
@@ -120,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        banner.setImageResource(R.drawable.banner2);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

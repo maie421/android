@@ -42,9 +42,6 @@ public class SearchActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.home: {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("id",id); /*송신*/
-                    startActivity(intent);
                     finish();
                     return true;
                 }
@@ -67,5 +64,10 @@ public class SearchActivity extends AppCompatActivity {
 
             return false;
         }
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        bottomNavigationView.setSelectedItemId(R.id.menu_search);
     }
 }
