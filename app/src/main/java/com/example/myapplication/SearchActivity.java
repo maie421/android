@@ -20,9 +20,6 @@ public class SearchActivity extends AppCompatActivity {
 
         init(); //객체 정의
         SettingListener(); //리스너 등록
-
-        //맨 처음 시작할 탭 설정
-        bottomNavigationView.setSelectedItemId(R.id.menu_search);
     }
 
     private void init() {
@@ -65,9 +62,10 @@ public class SearchActivity extends AppCompatActivity {
             return false;
         }
     }
+
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onStart() {
+        super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.menu_search);
     }
 }

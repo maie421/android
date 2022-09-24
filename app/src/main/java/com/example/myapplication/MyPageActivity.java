@@ -23,7 +23,6 @@ public class MyPageActivity extends AppCompatActivity {
         init(); //객체 정의
         SettingListener(); //리스너 등록
 
-        bottomNavigationView.setSelectedItemId(R.id.my_page);
     }
 
     private void init() {
@@ -72,8 +71,9 @@ public class MyPageActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onStart() {
+        super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.my_page);
     }
+
 }

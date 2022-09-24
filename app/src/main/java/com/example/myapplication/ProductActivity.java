@@ -162,8 +162,8 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onStart() {
+        super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.add);
     }
 }
