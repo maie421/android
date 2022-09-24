@@ -94,16 +94,6 @@ public class ProductActivity extends AppCompatActivity {
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(intent, 1);
-//
-//
-//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//            bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-//            scale = (float) (1024/(float)bitmap.getWidth());
-//            image_w = (int) (bitmap.getWidth() * scale);
-//            image_h = (int) (bitmap.getHeight() * scale);
-//            resize = Bitmap.createScaledBitmap(bitmap, image_w, image_h, true);
-//            resize.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-//            byteArray = stream.toByteArray();
         });
     }
 
