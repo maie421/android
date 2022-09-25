@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.CouponItem.allArrayList;
 import static com.example.myapplication.CouponItem.itemArrayList;
 import static com.example.myapplication.CouponItem.giftArrayList;
 
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
     String price;
     String salePrice;
     Bitmap bitmap;
-    Bitmap bm;
+    Bitmap itemBm;
+    Bitmap giftBm;
 
     TextView titleView;
     TextView companyView;
@@ -47,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
     TextView salePriceView;
     ImageView imageview;
     ImageView banner;
-    Button allButon;
-    Button martButon;
+    Button allButton;
+    Button martButton;
+    Button itemButton;
 
     RecyclerView recyclerView;
     GridViewAdapter adapter;
@@ -68,16 +71,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         //버튼
-        martButon.setOnClickListener(view -> {
+        martButton.setOnClickListener(view -> {
             adapter.setArrayList(giftArrayList);
             adapter.notifyDataSetChanged();
         });
-        //버튼
-        allButon.setOnClickListener(view -> {
+        allButton.setOnClickListener(view -> {
+            adapter.setArrayList(allArrayList);
+            adapter.notifyDataSetChanged();
+        });
+        itemButton.setOnClickListener(view -> {
             adapter.setArrayList(itemArrayList);
             adapter.notifyDataSetChanged();
         });
-
 //        imageview.setOnClickListener(view -> {
 //            Log.d("테222스트","ㅁㅇㄴㄹㅇㄹ");
 //            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
@@ -103,8 +108,9 @@ public class MainActivity extends AppCompatActivity {
         salePriceView = findViewById(R.id.salePrice);
         banner = findViewById(R.id.banner);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        allButon = findViewById(R.id.all_button);
-        martButon = findViewById(R.id.mart_button);
+        allButton = findViewById(R.id.all_button);
+        martButton = findViewById(R.id.mart_button);
+        itemButton = findViewById(R.id.item_button);
 
         adapter = new GridViewAdapter();
         recyclerView.setAdapter(adapter);
@@ -113,19 +119,23 @@ public class MainActivity extends AppCompatActivity {
 
         //이미지
         AssetManager am = getResources().getAssets() ;
-        InputStream delivery = null;
+        InputStream gift = null;
+        InputStream item = null;
         try {
-            delivery = am.open("배민.jpeg");
+            gift = am.open("배민.jpeg");
+            item = am.open("coffee.png");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        bm = BitmapFactory.decodeStream(delivery) ;
+        giftBm = BitmapFactory.decodeStream(gift) ;
+        itemBm = BitmapFactory.decodeStream(item) ;
 
         //쿠폰 데이터 세팅
-        CouponItem.insertItemArrayList(bm);
-        CouponItem.insertgiftArrayList(bm);
+        CouponItem.insertItemArrayList(itemBm);
+        CouponItem.insertgiftArrayList(giftBm);
+        CouponItem.insertAllArrayList(giftBm, itemBm);
 
-        adapter.setArrayList(itemArrayList);
+        adapter.setArrayList(allArrayList);
 
         Intent intent = getIntent();
         id = intent.getExtras().getString("id");

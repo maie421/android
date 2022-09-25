@@ -14,27 +14,36 @@ public class CouponItem {
     public String price;
     public String salePrice;
     public Bitmap bitmap;
-    public static ArrayList<CouponItem> itemArrayList;
-    public static ArrayList<CouponItem> giftArrayList;
+    public static ArrayList<CouponItem> itemArrayList = new ArrayList<>();
+    public static ArrayList<CouponItem> giftArrayList = new ArrayList<>();
+    public static ArrayList<CouponItem> allArrayList = new ArrayList<>();
 
-    public CouponItem(String title, String company, String price, String salePrice, Bitmap bitmap){
+    public CouponItem(String title, String company, String price, String salePrice, Bitmap bitmap) {
         this.title = title;
-        this.company= company;
+        this.company = company;
         this.price = price;
         this.salePrice = salePrice;
         this.bitmap = bitmap;
     }
-    public static void insertItemArrayList(Bitmap bm){
-        itemArrayList = new ArrayList<>();
-        for (int i =0; i<40; i++){
-            itemArrayList.add(new CouponItem("5000원 쿠폰","배달의 민족","5000","2000",bm));
+
+    public static void insertItemArrayList(Bitmap item) {
+        for (int i = 0; i < 10; i++) {
+            itemArrayList.add(new CouponItem("카페아메리카노 Tall", "스타벅스", "4100", "3500", item));
         }
     }
 
-    public static void insertgiftArrayList(Bitmap bm){
-        giftArrayList = new ArrayList<>();
-        for (int i =0; i < 40; i++){
-            giftArrayList.add(new CouponItem("마트쿠폰","배달의 민족","5000","2000",bm));
+    public static void insertgiftArrayList(Bitmap gift) {
+        for (int i = 0; i < 10; i++) {
+            giftArrayList.add(new CouponItem("5000원 쿠폰", "배달의 민족", "5000", "2000", gift));
+        }
+    }
+
+    public static void insertAllArrayList(Bitmap gift,Bitmap item) {
+        for (int i = 0; i < 10; i++) {
+            allArrayList.add(new CouponItem("5000원 쿠폰", "배달의 민족", "5000", "2000", gift));
+        }
+        for (int i = 0; i < 10; i++) {
+            allArrayList.add(new CouponItem("카페아메리카노 Tall", "스타벅스", "4100", "3500", item));
         }
     }
 }
