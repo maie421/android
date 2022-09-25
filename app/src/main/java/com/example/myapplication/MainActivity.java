@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import static com.example.myapplication.CouponItem.itemArrayList;
+import static com.example.myapplication.CouponItem.giftArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     String price;
     String salePrice;
     Bitmap bitmap;
+    Bitmap bm;
 
     TextView titleView;
     TextView companyView;
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     TextView salePriceView;
     ImageView imageview;
     ImageView banner;
+    Button allButon;
+    Button martButon;
 
     RecyclerView recyclerView;
     GridViewAdapter adapter;
@@ -61,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
             startActivity(intent);
+        });
+        //버튼
+        martButon.setOnClickListener(view -> {
+            adapter.setArrayList(giftArrayList);
+            adapter.notifyDataSetChanged();
+        });
+        //버튼
+        allButon.setOnClickListener(view -> {
+            adapter.setArrayList(itemArrayList);
+            adapter.notifyDataSetChanged();
         });
 
 //        imageview.setOnClickListener(view -> {
@@ -88,27 +103,31 @@ public class MainActivity extends AppCompatActivity {
         salePriceView = findViewById(R.id.salePrice);
         banner = findViewById(R.id.banner);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        allButon = findViewById(R.id.all_button);
+        martButon = findViewById(R.id.mart_button);
 
         adapter = new GridViewAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
+
+        //이미지
         AssetManager am = getResources().getAssets() ;
-        InputStream is = null;
+        InputStream delivery = null;
         try {
-            is = am.open("배민.jpeg");
+            delivery = am.open("배민.jpeg");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Bitmap bm = BitmapFactory.decodeStream(is) ;
-        itemArrayList = new ArrayList<>();
-        for (int i =0; i<40; i++){
-            itemArrayList.add(new CouponItem("5000원 쿠폰","배달의 민족","5000","2000",bm));
-        }
+        bm = BitmapFactory.decodeStream(delivery) ;
+
+        //쿠폰 데이터 세팅
+        CouponItem.insertItemArrayList(bm);
+        CouponItem.insertgiftArrayList(bm);
 
         adapter.setArrayList(itemArrayList);
 
-        Intent intent = getIntent(); /*데이터 수신*/
+        Intent intent = getIntent();
         id = intent.getExtras().getString("id");
     }
 
