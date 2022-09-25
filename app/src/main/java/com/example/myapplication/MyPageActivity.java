@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import static com.example.myapplication.CouponItem.allArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
+import static com.example.myapplication.CouponItem.purchaseArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +14,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MyPageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    TextView forSaleView;
+    TextView purchaseView;
     String id;
     RecyclerView recyclerView;
     ViewAdapter adapter;
@@ -29,11 +33,12 @@ public class MyPageActivity extends AppCompatActivity {
 
         init(); //객체 정의
         SettingListener(); //리스너 등록
-
     }
 
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
+        forSaleView = findViewById(R.id.forSaleView);
+        purchaseView = findViewById(R.id.purchaseView);
 
         Intent intent = getIntent(); /*데이터 수신*/
 
@@ -46,6 +51,15 @@ public class MyPageActivity extends AppCompatActivity {
         adapter = new ViewAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+
+        forSaleView.setOnClickListener(view -> {
+            adapter.setArrayList(myItemArrayList);
+            adapter.notifyDataSetChanged();
+        });
+        purchaseView.setOnClickListener(view -> {
+            adapter.setArrayList(purchaseArrayList);
+            adapter.notifyDataSetChanged();
+        });
     }
 
     private void SettingListener() {
@@ -86,7 +100,7 @@ public class MyPageActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.my_page);
-        adapter.setArrayList(myItemArrayList);
+        adapter.setArrayList(purchaseArrayList);
     }
 
 }

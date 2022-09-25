@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.CouponItem.myItemArrayList;
+import static com.example.myapplication.CouponItem.purchaseArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -70,6 +73,7 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         purchaseBtn.setOnClickListener(view -> {
+            purchaseArrayList.add(0,new CouponItem(title, company, price, salePrice, bitmap));
             finish();
         });
     }
