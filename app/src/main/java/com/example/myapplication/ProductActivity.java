@@ -38,11 +38,10 @@ public class ProductActivity extends AppCompatActivity {
     TextView salePrice;
     Button submitBtn;
     ImageView imageView;
-    Spinner spinner;
     String id;
     Bitmap img;
 
-    private Spinner spinner2;
+    private Spinner spinner;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
 
@@ -77,9 +76,9 @@ public class ProductActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_dropdown_item,
                 arrayList);
 
-        spinner2 = (Spinner)findViewById(R.id.spinner);
-        spinner2.setAdapter(arrayAdapter);
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(),arrayList.get(i)+"가 선택되었습니다.",
