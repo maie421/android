@@ -39,11 +39,10 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
-//        adapter.setAdapter(adapter);
 //        itemArrayList = new ArrayList<>();
-        for (int i =0; i<40; i++){
-            itemArrayList.add(new CouponItem("3000원 쿠폰","배달의 민족","3000","2000"));
-        }
+//        for (int i =0; i<40; i++){
+//            itemArrayList.add(new CouponItem("3000원 쿠폰","배달의 민족","3000","2000",b));
+//        }
 
         adapter.setArrayList(itemArrayList);
 

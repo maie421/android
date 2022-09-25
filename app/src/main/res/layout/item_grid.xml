@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <ImageView
@@ -11,16 +11,13 @@
         android:layout_height="148dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="257dp"
-        app:layout_constraintBottom_toTopOf="@+id/company"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
+        app:srcCompat="@drawable/user_24"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/company"
+        android:id="@+id/companyView"
         android:layout_width="138dp"
         android:layout_height="19dp"
         android:layout_marginStart="16dp"
@@ -28,26 +25,26 @@
         android:layout_marginBottom="6dp"
         android:text="배달의 민족"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/title"
+        app:layout_constraintBottom_toTopOf="@+id/titleView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/titleView"
         android:layout_width="141dp"
         android:layout_height="21dp"
         android:layout_marginStart="13dp"
         android:layout_marginTop="6dp"
         android:text="배달의민족 5천원 쿠폰"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/salePrice"
+        app:layout_constraintBottom_toTopOf="@+id/salePriceView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/company"
+        app:layout_constraintTop_toBottomOf="@+id/companyView"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/salePrice"
+        android:id="@+id/salePriceView"
         android:layout_width="56dp"
         android:layout_height="15dp"
         android:layout_marginStart="13dp"
@@ -55,13 +52,13 @@
         android:layout_marginBottom="12dp"
         android:text="5,000원"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/price"
+        app:layout_constraintBottom_toTopOf="@+id/priceView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/titleView"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/priceView"
         android:layout_width="85dp"
         android:layout_height="21dp"
         android:layout_marginStart="16dp"
@@ -69,5 +66,5 @@
         android:text="4,650원"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/salePrice" />
+        app:layout_constraintTop_toBottomOf="@+id/salePriceView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

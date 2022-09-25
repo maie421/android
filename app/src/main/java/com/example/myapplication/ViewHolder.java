@@ -18,20 +18,19 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
-//        imageview = imageview.findViewById(R.id.imageView);
-        titleView = (TextView)  itemView.findViewById(R.id.titleView);
-        companyView = (TextView) itemView.findViewById(R.id.companyView);
-        priceView = (TextView) itemView.findViewById(R.id.priceView);
-        salePriceView = (TextView) itemView.findViewById(R.id.salePriceView);
+        imageview = itemView.findViewById(R.id.imageView);
+        titleView = itemView.findViewById(R.id.titleView);
+        companyView = itemView.findViewById(R.id.companyView);
+        priceView = itemView.findViewById(R.id.priceView);
+        salePriceView = itemView.findViewById(R.id.salePriceView);
     }
 
 
     void onBind(CouponItem item){
-        Log.d("sdfㅇ","ddd");
         titleView.setText(item.title);
         companyView.setText(item.company);
         priceView.setText(item.price);
         salePriceView.setText(item.salePrice);
-//        imageview.setImageBitmap(item.bitmap);
+        imageview.setImageBitmap(item.bitmap);
     }
 }
