@@ -29,13 +29,7 @@ public class ProductActivity extends AppCompatActivity {
     TextView salePrice;
     Button submitBtn;
     ImageView imageView;
-    Bitmap bitmap;
-    float scale;
     String id;
-    int image_w;
-    int image_h;
-    Bitmap resize;
-    byte[] byteArray;
     Bitmap img;
 
     @Override

@@ -50,18 +50,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        imageview.setOnClickListener(view -> {
-            Log.d("테222스트","ㅁㅇㄴㄹㅇㄹ");
-            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
-            intent.putExtra("id",id);
-            intent.putExtra("title", titleView.getText().toString());
-            intent.putExtra("company", companyView.getText().toString());
-            intent.putExtra("price", priceView.getText().toString());
-            intent.putExtra("salePrice", salePriceView.getText().toString());
-            intent.putExtra("image", byteArray);
-
-            startActivity(intent);
-        });
+//        imageview.setOnClickListener(view -> {
+//            Log.d("테222스트","ㅁㅇㄴㄹㅇㄹ");
+//            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+//            intent.putExtra("id",id);
+//            intent.putExtra("title", titleView.getText().toString());
+//            intent.putExtra("company", companyView.getText().toString());
+//            intent.putExtra("price", priceView.getText().toString());
+//            intent.putExtra("salePrice", salePriceView.getText().toString());
+//            intent.putExtra("image", byteArray);
+//
+//            startActivity(intent);
+//        });
     }
 
 

@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.CouponItem.itemArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,7 +20,7 @@ public class SearchActivity extends AppCompatActivity {
     String id;
     RecyclerView recyclerView;
     ViewAdapter adapter;
-    ArrayList<CouponItem> itemArrayList;
+//    ArrayList<CouponItem> itemArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
 //        adapter.setAdapter(adapter);
-        itemArrayList = new ArrayList<>();
+//        itemArrayList = new ArrayList<>();
         for (int i =0; i<40; i++){
             itemArrayList.add(new CouponItem("3000원 쿠폰","배달의 민족","3000","2000"));
         }
