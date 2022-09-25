@@ -1,5 +1,9 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.CouponItem.allArrayList;
+import static com.example.myapplication.CouponItem.giftArrayList;
+import static com.example.myapplication.CouponItem.itemArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +33,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class ProductActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -81,8 +86,7 @@ public class ProductActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),arrayList.get(i)+"가 선택되었습니다.",
-                        Toast.LENGTH_SHORT).show();
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -111,7 +115,15 @@ public class ProductActivity extends AppCompatActivity {
             intent.putExtra("company", company.getText().toString());
             intent.putExtra("price", price.getText().toString());
             intent.putExtra("salePrice", salePrice.getText().toString());
+            intent.putExtra("type", spinner.getSelectedItem().toString());
             intent.putExtra("image", byteArray);
+
+            if (Objects.equals(spinner.getSelectedItem().toString(), "상품")) {
+                itemArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
+            }else{
+                giftArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
+            }
+            allArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
 
             setResult(RESULT_OK,intent);
             finish();

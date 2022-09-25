@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.CouponItem.allArrayList;
 import static com.example.myapplication.CouponItem.itemArrayList;
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,7 @@ public class SearchActivity extends AppCompatActivity {
 //            itemArrayList.add(new CouponItem("3000원 쿠폰","배달의 민족","3000","2000",b));
 //        }
 
-        adapter.setArrayList(itemArrayList);
+
 
         Intent intent = getIntent(); /*데이터 수신*/
         id = intent.getExtras().getString("id");
@@ -88,5 +89,6 @@ public class SearchActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.menu_search);
+        adapter.setArrayList(allArrayList);
     }
 }

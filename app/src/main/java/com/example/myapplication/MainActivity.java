@@ -30,6 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     String company;
     String price;
     String salePrice;
+    String type;
+    String mainType = "ALL";
     Bitmap bitmap;
     Bitmap itemBm;
     Bitmap giftBm;
@@ -73,14 +76,17 @@ public class MainActivity extends AppCompatActivity {
         //버튼
         martButton.setOnClickListener(view -> {
             adapter.setArrayList(giftArrayList);
+            mainType = "GIFT";
             adapter.notifyDataSetChanged();
         });
         allButton.setOnClickListener(view -> {
             adapter.setArrayList(allArrayList);
+            mainType = "ALL";
             adapter.notifyDataSetChanged();
         });
         itemButton.setOnClickListener(view -> {
             adapter.setArrayList(itemArrayList);
+            mainType = "ITEM";
             adapter.notifyDataSetChanged();
         });
 //        imageview.setOnClickListener(view -> {
@@ -198,21 +204,15 @@ public class MainActivity extends AppCompatActivity {
             company = data.getExtras().getString("company");
             price = data.getExtras().getString("price");
             salePrice = data.getExtras().getString("salePrice");
+            type = data.getExtras().getString("type");
 
             byteArray = data.getExtras().getByteArray("image");
             bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
 
-            titleView = findViewById(R.id.title);
-            companyView = findViewById(R.id.company);
-            priceView = findViewById(R.id.price);
-            salePriceView = findViewById(R.id.salePrice);
-            imageview = findViewById(R.id.imageView);
 
-            titleView.setText(title);
-            companyView.setText(company);
-            priceView.setText(price);
-            salePriceView.setText(salePrice);
-            imageview.setImageBitmap(bitmap);
+            if (Objects.equals(mainType, "ALL") || Objects.equals(mainType, type)){
+                adapter.notifyItemInserted(0);
+            }
         }
     }
 }
