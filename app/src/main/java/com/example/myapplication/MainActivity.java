@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     String company;
     String price;
     String salePrice;
+    Bitmap bitmap;
 
     TextView titleView;
     TextView companyView;
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView banner;
 
     byte[] byteArray;
-    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +150,6 @@ public class MainActivity extends AppCompatActivity {
             companyView.setText(company);
             priceView.setText(price);
             salePriceView.setText(salePrice);
-
             imageview.setImageBitmap(bitmap);
         }
     }

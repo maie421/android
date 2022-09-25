@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +11,14 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class SearchActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     String id;
+    RecyclerView recyclerView;
+    ViewAdapter adapter;
+    ArrayList<CouponItem> itemArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +31,21 @@ public class SearchActivity extends AppCompatActivity {
 
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
-        Intent intent = getIntent(); /*데이터 수신*/
 
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        adapter = new ViewAdapter();
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+
+//        adapter.setAdapter(adapter);
+        itemArrayList = new ArrayList<>();
+        for (int i =0; i<40; i++){
+            itemArrayList.add(new CouponItem("3000원 쿠폰","배달의 민족","3000","2000"));
+        }
+
+        adapter.setArrayList(itemArrayList);
+
+        Intent intent = getIntent(); /*데이터 수신*/
         id = intent.getExtras().getString("id");
     }
 
