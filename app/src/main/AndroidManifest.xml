@@ -31,6 +31,7 @@
             android:exported="false" />
         <activity
             android:name=".ProductActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".JoinActivity"

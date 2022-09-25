@@ -17,6 +17,8 @@ public class CouponItem {
     public static ArrayList<CouponItem> itemArrayList = new ArrayList<>();
     public static ArrayList<CouponItem> giftArrayList = new ArrayList<>();
     public static ArrayList<CouponItem> allArrayList = new ArrayList<>();
+    public static ArrayList<CouponItem> purchaseArrayList = new ArrayList<>();
+    public static ArrayList<CouponItem> myItemArrayList = new ArrayList<>();
 
     public CouponItem(String title, String company, String price, String salePrice, Bitmap bitmap) {
         this.title = title;

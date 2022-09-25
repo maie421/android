@@ -3,6 +3,8 @@ package com.example.myapplication;
 import static com.example.myapplication.CouponItem.allArrayList;
 import static com.example.myapplication.CouponItem.giftArrayList;
 import static com.example.myapplication.CouponItem.itemArrayList;
+import static com.example.myapplication.CouponItem.myItemArrayList;
+import static com.example.myapplication.CouponItem.purchaseArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,7 +78,6 @@ public class ProductActivity extends AppCompatActivity {
         arrayList = new ArrayList<>();
         arrayList.add("상품");
         arrayList.add("상품권");
-
         arrayAdapter = new ArrayAdapter<>(getApplicationContext(),
                 android.R.layout.simple_spinner_dropdown_item,
                 arrayList);
@@ -124,6 +125,7 @@ public class ProductActivity extends AppCompatActivity {
                 giftArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
             }
             allArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
+            myItemArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
 
             setResult(RESULT_OK,intent);
             finish();

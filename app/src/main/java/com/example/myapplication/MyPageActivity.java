@@ -1,7 +1,12 @@
 package com.example.myapplication;
 
+import static com.example.myapplication.CouponItem.allArrayList;
+import static com.example.myapplication.CouponItem.myItemArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +19,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MyPageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     String id;
+    RecyclerView recyclerView;
+    ViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,11 @@ public class MyPageActivity extends AppCompatActivity {
 
         TextView title = findViewById(R.id.title);
         title.setText(id + " 주인님");
+
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        adapter = new ViewAdapter();
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
     }
 
     private void SettingListener() {
@@ -74,6 +86,7 @@ public class MyPageActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.my_page);
+        adapter.setArrayList(myItemArrayList);
     }
 
 }
