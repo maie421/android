@@ -29,7 +29,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     ImageView imageview;
     Bitmap bitmap;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
         imageview = itemView.findViewById(R.id.imageView);
