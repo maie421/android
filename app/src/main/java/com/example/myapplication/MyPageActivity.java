@@ -22,9 +22,10 @@ public class MyPageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     TextView forSaleView;
     TextView purchaseView;
+    public static String mypage_type = "PURCHASE";
     String id;
     RecyclerView recyclerView;
-    ViewAdapter adapter;
+    public static MyPageViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,16 +49,18 @@ public class MyPageActivity extends AppCompatActivity {
         title.setText(id + " 주인님");
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-        adapter = new ViewAdapter();
+        adapter = new MyPageViewAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
         forSaleView.setOnClickListener(view -> {
             adapter.setArrayList(myItemArrayList);
+            mypage_type = "MY_COUPON";
             adapter.notifyDataSetChanged();
         });
         purchaseView.setOnClickListener(view -> {
             adapter.setArrayList(purchaseArrayList);
+            mypage_type = "PURCHASE";
             adapter.notifyDataSetChanged();
         });
     }

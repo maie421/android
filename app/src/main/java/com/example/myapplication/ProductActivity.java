@@ -153,6 +153,7 @@ public class ProductActivity extends AppCompatActivity {
                     return true;
                 }
                 case R.id.menu_search: {
+                    finish();
                     Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                     intent.putExtra("id",id); /*송신*/
                     startActivity(intent);
@@ -162,6 +163,7 @@ public class ProductActivity extends AppCompatActivity {
                     return true;
                 }
                 case R.id.my_page: {
+                    finish();
                     Intent intent = new Intent(getApplicationContext(), MyPageActivity.class);
                     intent.putExtra("id",id); /*송신*/
                     startActivity(intent);

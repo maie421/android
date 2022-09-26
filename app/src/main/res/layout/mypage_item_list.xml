@@ -75,4 +75,13 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        app:srcCompat="@android:drawable/btn_star_big_on" />-->
 
+    <Button
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="108dp"
+        android:text="제거"
+        app:layout_constraintStart_toEndOf="@+id/priceView"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
