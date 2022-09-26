@@ -42,7 +42,7 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
 
         button.setOnClickListener(view -> {
             int position = getAdapterPosition();
-            allArrayList.remove(titleView.getText().toString());
+//            allArrayList.remove(titleView.getText().toString());
 
             if (Objects.equals(mypage_type, "MY_COUPON")){
                 myItemArrayList.remove(position);
