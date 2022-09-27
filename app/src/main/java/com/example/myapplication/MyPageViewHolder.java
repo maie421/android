@@ -1,5 +1,7 @@
 package com.example.myapplication;
 import static com.example.myapplication.CouponItem.allArrayList;
+import static com.example.myapplication.CouponItem.giftArrayList;
+import static com.example.myapplication.CouponItem.itemArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
 import static com.example.myapplication.MainActivity.mainAdapter;
@@ -44,15 +46,27 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
 
         button.setOnClickListener(view -> {
             int position = getAdapterPosition();
-
+            int i;
+            int j;
+            int g;
             if (Objects.equals(mypage_type, "MY_COUPON")){
-                for (int i =0 ;i< allArrayList.size();i++){
+                for (i =0 ;i< allArrayList.size();i++){
                     if (Objects.equals(allArrayList.get(i).title, titleView.getText().toString())){
                         allArrayList.remove(i);
                     }
                 }
+                for (g =0 ;g< giftArrayList.size();g++){
+                    if (Objects.equals(giftArrayList.get(g).title, titleView.getText().toString())){
+                        giftArrayList.remove(g);
+                    }
+                }
+                for (j =0 ;j< itemArrayList.size();j++){
+                    if (Objects.equals(itemArrayList.get(j).title, titleView.getText().toString())){
+                        itemArrayList.remove(j);
+                    }
+                }
                 myItemArrayList.remove(position);
-                mainAdapter.notifyItemRemoved(position);
+                mainAdapter.notifyDataSetChanged();;
             }else {
                 purchaseArrayList.remove(position);
             }
