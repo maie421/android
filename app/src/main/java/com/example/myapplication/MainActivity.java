@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     Button itemButton;
 
     RecyclerView recyclerView;
-    GridViewAdapter adapter;
+    public static GridViewAdapter mainAdapter;
 
     byte[] byteArray;
 
@@ -75,19 +75,19 @@ public class MainActivity extends AppCompatActivity {
         });
         //버튼
         martButton.setOnClickListener(view -> {
-            adapter.setArrayList(giftArrayList);
+            mainAdapter.setArrayList(giftArrayList);
             mainType = "GIFT";
-            adapter.notifyDataSetChanged();
+            mainAdapter.notifyDataSetChanged();
         });
         allButton.setOnClickListener(view -> {
-            adapter.setArrayList(allArrayList);
+            mainAdapter.setArrayList(allArrayList);
             mainType = "ALL";
-            adapter.notifyDataSetChanged();
+            mainAdapter.notifyDataSetChanged();
         });
         itemButton.setOnClickListener(view -> {
-            adapter.setArrayList(itemArrayList);
+            mainAdapter.setArrayList(itemArrayList);
             mainType = "ITEM";
-            adapter.notifyDataSetChanged();
+            mainAdapter.notifyDataSetChanged();
         });
 //        imageview.setOnClickListener(view -> {
 //            Log.d("테222스트","ㅁㅇㄴㄹㅇㄹ");
@@ -118,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
         martButton = findViewById(R.id.mart_button);
         itemButton = findViewById(R.id.item_button);
 
-        adapter = new GridViewAdapter();
-        recyclerView.setAdapter(adapter);
+        mainAdapter = new GridViewAdapter();
+        recyclerView.setAdapter(mainAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         CouponItem.insertgiftArrayList(giftBm);
         CouponItem.insertAllArrayList(giftBm, itemBm);
 
-        adapter.setArrayList(allArrayList);
+        mainAdapter.setArrayList(allArrayList);
 
         Intent intent = getIntent();
         id = intent.getExtras().getString("id");
@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             if (Objects.equals(mainType, "ALL") || Objects.equals(mainType, type)){
-                adapter.notifyItemInserted(0);
+                mainAdapter.notifyItemInserted(0);
             }
         }
     }

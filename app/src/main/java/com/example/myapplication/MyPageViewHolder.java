@@ -2,11 +2,13 @@ package com.example.myapplication;
 import static com.example.myapplication.CouponItem.allArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
+import static com.example.myapplication.MainActivity.mainAdapter;
 import static com.example.myapplication.MyPageActivity.adapter;
 import static com.example.myapplication.MyPageActivity.mypage_type;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,10 +44,15 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
 
         button.setOnClickListener(view -> {
             int position = getAdapterPosition();
-//            allArrayList.remove(titleView.getText().toString());
 
             if (Objects.equals(mypage_type, "MY_COUPON")){
+                for (int i =0 ;i< allArrayList.size();i++){
+                    if (Objects.equals(allArrayList.get(i).title, titleView.getText().toString())){
+                        allArrayList.remove(i);
+                    }
+                }
                 myItemArrayList.remove(position);
+                mainAdapter.notifyItemRemoved(position);
             }else {
                 purchaseArrayList.remove(position);
             }
