@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            if (!preferences.getString(email.getText().toString(), null).equals(password.getText().toString())) {
+            if (!preferences.getString(email.getText().toString(), "").equals(password.getText().toString())) {
                 Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호가 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
