@@ -57,7 +57,7 @@ public class CouponItem {
     public static void getItemArrayList() {
         itemArrayList.clear();
         for (int i =0 ;i< allArrayList.size();i++){
-            if (Objects.equals(allArrayList.get(i).type, "상품권")){
+            if (Objects.equals(allArrayList.get(i).type, "상품")){
                 itemArrayList.add(new CouponItem(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price,allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap));
             }
         }

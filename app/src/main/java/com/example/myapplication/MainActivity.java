@@ -102,18 +102,6 @@ public class MainActivity extends AppCompatActivity {
             mainType = "ITEM";
             mainAdapter.notifyDataSetChanged();
         });
-//        imageview.setOnClickListener(view -> {
-//            Log.d("테222스트","ㅁㅇㄴㄹㅇㄹ");
-//            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
-//            intent.putExtra("id",id);
-//            intent.putExtra("title", titleView.getText().toString());
-//            intent.putExtra("company", companyView.getText().toString());
-//            intent.putExtra("price", priceView.getText().toString());
-//            intent.putExtra("salePrice", salePriceView.getText().toString());
-//            intent.putExtra("image", byteArray);
-//
-//            startActivity(intent);
-//        });
     }
 
 
@@ -150,22 +138,6 @@ public class MainActivity extends AppCompatActivity {
         giftBm = BitmapFactory.decodeStream(gift) ;
         itemBm = BitmapFactory.decodeStream(item) ;
 
-
-
-        preferences = getSharedPreferences("Item", MODE_PRIVATE);
-        Map<String,?> keys = preferences.getAll();
-        for(Map.Entry<String,?> entry : keys.entrySet()){
-            CouponItem.insertItemArrayList(getStringArrayPref("Item",entry.getKey()));
-        }
-        //쿠폰 데이터 세팅
-        CouponItem.getItemArrayList();
-        CouponItem.getGiftArrayList();
-
-        mainAdapter.setArrayList(allArrayList);
-
-        Intent intent = getIntent();
-        id = intent.getExtras().getString("id");
-
 //        for (int i = 0; i < 10; i++) {
 //            ArrayList<String> data = new ArrayList<>();
 //            ArrayList<String> item_data = new ArrayList<>();
@@ -174,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 //            data.add("스타벅스");
 //            data.add("4100");
 //            data.add("3500");
-//            data.add("상품권");
+//            data.add("상품");
 //            data.add(id);
 //            data.add(BitmapToString(giftBm));
 //
@@ -191,6 +163,21 @@ public class MainActivity extends AppCompatActivity {
 //
 //
 //        }
+
+        preferences = getSharedPreferences("Item", MODE_PRIVATE);
+        Map<String,?> keys = preferences.getAll();
+        for(Map.Entry<String,?> entry : keys.entrySet()){
+            CouponItem.insertItemArrayList(getStringArrayPref("Item",entry.getKey()));
+        }
+        //쿠폰 데이터 세팅
+        CouponItem.getItemArrayList();
+        CouponItem.getGiftArrayList();
+
+        mainAdapter.setArrayList(allArrayList);
+
+        Intent intent = getIntent();
+        id = intent.getExtras().getString("id");
+
     }
 
     private void SettingListener() {

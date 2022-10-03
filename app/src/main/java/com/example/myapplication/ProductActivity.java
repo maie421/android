@@ -11,11 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +30,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONArray;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -51,6 +55,8 @@ public class ProductActivity extends AppCompatActivity {
     private Spinner spinner;
     ArrayList<String> arrayList;
     ArrayAdapter<String> arrayAdapter;
+
+    public SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +83,7 @@ public class ProductActivity extends AppCompatActivity {
 
         arrayList = new ArrayList<>();
         arrayList.add("상품");
-        arrayList.add("상품권");
+        arrayList.add("쿠폰");
         arrayAdapter = new ArrayAdapter<>(getApplicationContext(),
                 android.R.layout.simple_spinner_dropdown_item,
                 arrayList);
@@ -111,6 +117,19 @@ public class ProductActivity extends AppCompatActivity {
             byte[] byteArray = stream.toByteArray();
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+            ArrayList<String> data = new ArrayList<>();
+            ArrayList<String> item_data = new ArrayList<>();
+
+            data.add(title.getText().toString());
+            data.add(company.getText().toString());
+            data.add(price.getText().toString());
+            data.add(salePrice.getText().toString());
+            data.add(spinner.getSelectedItem().toString());
+            data.add(id);
+            data.add(BitmapToString(bitmap));
+            setStringArrayPref("Item",  title.getText().toString(), data);
+
             intent.putExtra("id",id);
             intent.putExtra("title", title.getText().toString());
             intent.putExtra("company", company.getText().toString());
@@ -119,12 +138,12 @@ public class ProductActivity extends AppCompatActivity {
             intent.putExtra("type", spinner.getSelectedItem().toString());
             intent.putExtra("image", byteArray);
 
-            if (Objects.equals(spinner.getSelectedItem().toString(), "상품")) {
+//            if (Objects.equals(spinner.getSelectedItem().toString(), "상품")) {
 //                itemArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
-            }else{
+//            }else{
 //                giftArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
-            }
-//            allArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
+//            }
+            allArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(),spinner.getSelectedItem().toString(), id,bitmap));
 //            myItemArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
 
             setResult(RESULT_OK,intent);
@@ -199,5 +218,28 @@ public class ProductActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.add);
+    }
+
+    public static String BitmapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
+        byte[] bytes = baos.toByteArray();
+        String temp = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return temp;
+    }
+
+    public void setStringArrayPref(String context, String key, ArrayList<String> values) {
+        preferences = getSharedPreferences(context, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
     }
 }
