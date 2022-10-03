@@ -40,13 +40,8 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         salePriceView = itemView.findViewById(R.id.salePriceView);
 
         itemView.setOnClickListener(view -> {
-            int position = getAdapterPosition ();
             Intent intent = new Intent(view.getContext(), DetailActivity.class);
             intent.putExtra("title", titleView.getText().toString());
-            intent.putExtra("company", companyView.getText().toString());
-            intent.putExtra("price", priceView.getText().toString());
-            intent.putExtra("salePrice", salePriceView.getText().toString());
-            intent.putExtra("image", bitmapToByteArray(allArrayList.get(position).bitmap));
 
             view.getContext().startActivity(intent);
         });

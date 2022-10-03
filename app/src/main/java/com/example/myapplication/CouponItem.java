@@ -66,6 +66,11 @@ public class CouponItem {
     public static void insertItemArrayList(ArrayList<String> item) {
         allArrayList.add(new CouponItem(item.get(0), item.get(1), item.get(2), item.get(3),item.get(4),item.get(5),StringToBitmap(item.get(6))));
     }
+
+    public static void insertPurchaseArrayList(ArrayList<String> item) {
+        purchaseArrayList.add(new CouponItem(item.get(0), item.get(1), item.get(2), item.get(3),item.get(4),item.get(5),StringToBitmap(item.get(6))));
+    }
+
     public static Bitmap StringToBitmap(String encodedString) {
         try {
             byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
