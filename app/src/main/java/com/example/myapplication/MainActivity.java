@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         searchView.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
+            intent.putExtra("id",id);
             startActivity(intent);
         });
         //버튼
