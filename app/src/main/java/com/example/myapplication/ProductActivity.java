@@ -128,7 +128,7 @@ public class ProductActivity extends AppCompatActivity {
             data.add(spinner.getSelectedItem().toString());
             data.add(id);
             data.add(BitmapToString(bitmap));
-            setStringArrayPref("Item",  title.getText().toString(), data);
+            setStringArrayPref("Purchase",  title.getText().toString(), data);
 
             intent.putExtra("id",id);
             intent.putExtra("title", title.getText().toString());
@@ -138,13 +138,7 @@ public class ProductActivity extends AppCompatActivity {
             intent.putExtra("type", spinner.getSelectedItem().toString());
             intent.putExtra("image", byteArray);
 
-//            if (Objects.equals(spinner.getSelectedItem().toString(), "상품")) {
-//                itemArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
-//            }else{
-//                giftArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
-//            }
             allArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(),spinner.getSelectedItem().toString(), id,bitmap));
-//            myItemArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(), bitmap));
 
             setResult(RESULT_OK,intent);
             finish();
@@ -195,10 +189,8 @@ public class ProductActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check which request we're responding to
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
-            // Make sure the request was successful
             if (resultCode == RESULT_OK) {
                 try {
                     // 선택한 이미지에서 비트맵 생성
