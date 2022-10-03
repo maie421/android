@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ public class JoinActivity extends AppCompatActivity {
     EditText email;
     EditText password;
     EditText passwordTmp;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class JoinActivity extends AppCompatActivity {
         passwordTmp = findViewById(R.id.passwordTmp);
 
         Button joinBtn = findViewById(R.id.joinBtn);
+
+        preferences = getSharedPreferences("User", MODE_PRIVATE);
 
         joinBtn.setOnClickListener(view -> {
             if (email.getText().toString().replace(" ", "").equals("")){
@@ -39,6 +43,12 @@ public class JoinActivity extends AppCompatActivity {
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             finishAffinity();
+            SharedPreferences.Editor editor = preferences.edit();
+
+            editor.putString("user_id",email.getText().toString());
+            editor.putString("user_pwd",password.getText().toString());
+            editor.commit();
+
             intent.putExtra("id",email.getText().toString()); /*송신*/
             startActivity(intent);
         });
