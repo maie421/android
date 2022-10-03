@@ -77,9 +77,8 @@ public class DetailActivity extends AppCompatActivity {
         priceView.setText(item.get(2));
         salePriceView.setText(item.get(3));
 
-        if (byteArray != null) {
-            bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-            imageview.setImageBitmap(bitmap);
+        if (item.get(6) != null) {
+            imageview.setImageBitmap(StringToBitmap(item.get(6)));
         }
 
         purchaseBtn.setOnClickListener(view -> {
@@ -132,5 +131,16 @@ public class DetailActivity extends AppCompatActivity {
             editor.putString(key, null);
         }
         editor.apply();
+    }
+
+    public static Bitmap StringToBitmap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 }
