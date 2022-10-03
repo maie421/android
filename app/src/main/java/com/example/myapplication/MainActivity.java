@@ -11,11 +11,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +31,10 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -58,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     public static GridViewAdapter mainAdapter;
+
+    public SharedPreferences preferences;
 
     byte[] byteArray;
 
@@ -133,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         giftBm = BitmapFactory.decodeStream(gift) ;
         itemBm = BitmapFactory.decodeStream(item) ;
 
@@ -140,6 +151,19 @@ public class MainActivity extends AppCompatActivity {
         CouponItem.insertItemArrayList(itemBm);
         CouponItem.insertgiftArrayList(giftBm);
         CouponItem.insertAllArrayList(giftBm, itemBm);
+
+        ArrayList<String> data = new ArrayList<>();
+        //"카페아메리카노 Tall", "스타벅스", "4100", "3500", item
+        data.add("카페아메리카노 Tall");
+        data.add("스타벅스");
+        data.add("4100");
+        data.add("3500");
+        data.add("3500");
+        data.add(BitmapToString(giftBm));
+
+        for (int i = 0; i < 10; i++) {
+            setStringArrayPref("Item", "카페아메리카노 Tall"+ i , data);
+        }
 
         mainAdapter.setArrayList(allArrayList);
 
@@ -214,5 +238,47 @@ public class MainActivity extends AppCompatActivity {
                 mainAdapter.notifyItemInserted(0);
             }
         }
+    }
+
+    public void setStringArrayPref(String context, String key, ArrayList<String> values) {
+        preferences = getSharedPreferences(context, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
+    }
+
+    public ArrayList<String> getStringArrayPref(String context, String key) {
+        preferences = getSharedPreferences(context, MODE_PRIVATE);
+        String json = preferences.getString(key, null);
+
+        ArrayList<String> urls = new ArrayList<String>();
+        if (json != null) {
+            try {
+                JSONArray a = new JSONArray(json);
+                for (int i = 0; i < a.length(); i++) {
+                    String url = a.optString(i);
+                    urls.add(url);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return urls;
+    }
+
+    public static String BitmapToString(Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 70, baos);
+        byte[] bytes = baos.toByteArray();
+        String temp = Base64.encodeToString(bytes, Base64.DEFAULT);
+        return temp;
     }
 }
