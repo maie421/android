@@ -54,15 +54,4 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         salePriceView.setText(item.salePrice);
         imageview.setImageBitmap(item.bitmap);
     }
-    public byte[] bitmapToByteArray( Bitmap bitmap ) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream() ;
-        float scale = (float) (1024/(float)bitmap.getWidth());
-        int image_w = (int) (bitmap.getWidth() * scale);
-        int image_h = (int) (bitmap.getHeight() * scale);
-        Bitmap resize = Bitmap.createScaledBitmap(bitmap, image_w, image_h, true);
-        resize.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        bitmap.compress( Bitmap.CompressFormat.JPEG, 100, stream) ;
-        return byteArray ;
-    }
 }

@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -18,9 +20,11 @@ import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    SearchView searchView;
     String id;
     RecyclerView recyclerView;
     ViewAdapter adapter;
+    public ArrayList<CouponItem> filterArrayList = new ArrayList<>();
 //    ArrayList<CouponItem> itemArrayList;
 
     @Override
@@ -34,21 +38,35 @@ public class SearchActivity extends AppCompatActivity {
 
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
+        searchView = findViewById(R.id.searchView);
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         adapter = new ViewAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
-//        itemArrayList = new ArrayList<>();
-//        for (int i =0; i<40; i++){
-//            itemArrayList.add(new CouponItem("3000원 쿠폰","배달의 민족","3000","2000",b));
-//        }
-
-
-
         Intent intent = getIntent(); /*데이터 수신*/
         id = intent.getExtras().getString("id");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                filterArrayList.clear();
+                for (int i =0 ; i < allArrayList.size(); i++){
+                    if (allArrayList.get(i).title.contains(s)){
+                        insertFilterArrayList(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price, allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap);
+                    }
+
+                }
+                adapter.setArrayList(filterArrayList);
+                return false;
+            }
+        });
     }
 
     private void SettingListener() {
@@ -90,5 +108,8 @@ public class SearchActivity extends AppCompatActivity {
         super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.menu_search);
         adapter.setArrayList(allArrayList);
+    }
+    public void insertFilterArrayList(String title, String company, String price, String salePrice, String type, String member_idx, Bitmap bitmap) {
+        filterArrayList.add(new CouponItem(title, company,price, salePrice,type,member_idx,bitmap));
     }
 }
