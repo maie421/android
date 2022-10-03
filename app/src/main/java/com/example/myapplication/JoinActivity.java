@@ -45,8 +45,7 @@ public class JoinActivity extends AppCompatActivity {
             finishAffinity();
             SharedPreferences.Editor editor = preferences.edit();
 
-            editor.putString("user_id",email.getText().toString());
-            editor.putString("user_pwd",password.getText().toString());
+            editor.putString(email.getText().toString(), password.getText().toString());
             editor.commit();
 
             intent.putExtra("id",email.getText().toString()); /*송신*/
