@@ -73,7 +73,7 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         purchaseBtn.setOnClickListener(view -> {
-            purchaseArrayList.add(0,new CouponItem(title, company, price, salePrice, bitmap));
+//            purchaseArrayList.add(0,new CouponItem(title, company, price, salePrice, bitmap));
             finish();
         });
     }

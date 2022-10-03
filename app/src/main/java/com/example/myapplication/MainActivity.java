@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         });
         //버튼
         martButton.setOnClickListener(view -> {
+            CouponItem.getGiftArrayList();
             mainAdapter.setArrayList(giftArrayList);
             mainType = "GIFT";
             mainAdapter.notifyDataSetChanged();
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             mainAdapter.notifyDataSetChanged();
         });
         itemButton.setOnClickListener(view -> {
+            CouponItem.getItemArrayList();
             mainAdapter.setArrayList(itemArrayList);
             mainType = "ITEM";
             mainAdapter.notifyDataSetChanged();
@@ -148,15 +150,16 @@ public class MainActivity extends AppCompatActivity {
         giftBm = BitmapFactory.decodeStream(gift) ;
         itemBm = BitmapFactory.decodeStream(item) ;
 
-        //쿠폰 데이터 세팅
-        CouponItem.insertItemArrayList(itemBm);
-        CouponItem.insertgiftArrayList(giftBm);
+
 
         preferences = getSharedPreferences("Item", MODE_PRIVATE);
         Map<String,?> keys = preferences.getAll();
         for(Map.Entry<String,?> entry : keys.entrySet()){
             CouponItem.insertItemArrayList(getStringArrayPref("Item",entry.getKey()));
         }
+        //쿠폰 데이터 세팅
+        CouponItem.getItemArrayList();
+        CouponItem.getGiftArrayList();
 
         mainAdapter.setArrayList(allArrayList);
 
