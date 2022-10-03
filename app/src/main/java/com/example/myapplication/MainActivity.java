@@ -38,6 +38,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -150,7 +151,12 @@ public class MainActivity extends AppCompatActivity {
         //쿠폰 데이터 세팅
         CouponItem.insertItemArrayList(itemBm);
         CouponItem.insertgiftArrayList(giftBm);
-        CouponItem.insertAllArrayList(giftBm, itemBm);
+
+        preferences = getSharedPreferences("Item", MODE_PRIVATE);
+        Map<String,?> keys = preferences.getAll();
+        for(Map.Entry<String,?> entry : keys.entrySet()){
+            CouponItem.insertItemArrayList(getStringArrayPref("Item",entry.getKey()));
+        }
 
         mainAdapter.setArrayList(allArrayList);
 
