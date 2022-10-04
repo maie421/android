@@ -4,9 +4,11 @@ import static com.example.myapplication.CouponItem.allArrayList;
 import static com.example.myapplication.CouponItem.getMyArrayList;
 import static com.example.myapplication.CouponItem.getPurchaseArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
+import static com.example.myapplication.CouponItem.purchaseAllArrayList;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +34,7 @@ import java.util.Map;
 
 public class MyPageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-    TextView forSaleView;
+    TextView saleView;
     TextView purchaseView;
     Button signoutButton;
     private SharedPreferences preferences_auto;
@@ -52,7 +56,7 @@ public class MyPageActivity extends AppCompatActivity {
 
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
-        forSaleView = findViewById(R.id.forSaleView);
+        saleView = findViewById(R.id.forSaleView);
         purchaseView = findViewById(R.id.purchaseView);
         signoutButton = findViewById(R.id.logoutButton);
 
@@ -73,14 +77,14 @@ public class MyPageActivity extends AppCompatActivity {
 
         adapter.setArrayList(purchaseArrayList);
 
-        forSaleView.setOnClickListener(view -> {
-            getMyItemList();
+        saleView.setOnClickListener(view -> {
+            getMyArrayList(id);
             adapter.setArrayList(myItemArrayList);
             mypage_type = "MY_COUPON";
             adapter.notifyDataSetChanged();
         });
         purchaseView.setOnClickListener(view -> {
-            getPurchaseItemList();
+            getPurchaseArrayList(id);
             adapter.setArrayList(purchaseArrayList);
             mypage_type = "PURCHASE";
             adapter.notifyDataSetChanged();
@@ -101,12 +105,13 @@ public class MyPageActivity extends AppCompatActivity {
     }
 
     private void getPurchaseItemList() {
+        purchaseAllArrayList.clear();
         preferences = getSharedPreferences("Purchase", MODE_PRIVATE);
         Map<String,?> keys = preferences.getAll();
         for(Map.Entry<String,?> entry : keys.entrySet()){
             CouponItem.insertPurchaseArrayList(getStringArrayPref("Purchase",entry.getKey()));
         }
-        getPurchaseArrayList(id);
+
     }
 
     private void getMyItemList() {
@@ -115,7 +120,6 @@ public class MyPageActivity extends AppCompatActivity {
         for(Map.Entry<String,?> entry : keys.entrySet()){
             CouponItem.insertPurchaseArrayList(getStringArrayPref("Item",entry.getKey()));
         }
-        getMyArrayList(id);
     }
 
     private void SettingListener() {
@@ -158,7 +162,7 @@ public class MyPageActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.my_page);
         //DB 에서 데이터 가져오기
         getPurchaseItemList();
-
+        getPurchaseArrayList(id);
         adapter.setArrayList(purchaseArrayList);
     }
     
