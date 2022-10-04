@@ -128,7 +128,7 @@ public class ProductActivity extends AppCompatActivity {
             data.add(spinner.getSelectedItem().toString());
             data.add(id);
             data.add(BitmapToString(bitmap));
-            setStringArrayPref("Purchase",  title.getText().toString(), data);
+            setStringArrayPref("Item",  title.getText().toString(), data);
 
             intent.putExtra("id",id);
             intent.putExtra("title", title.getText().toString());

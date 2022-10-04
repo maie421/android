@@ -75,6 +75,8 @@ public class MyPageActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
+        getPurchaseItemList();
+        getPurchaseArrayList(id);
         adapter.setArrayList(purchaseArrayList);
 
         saleView.setOnClickListener(view -> {
@@ -160,10 +162,6 @@ public class MyPageActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.my_page);
-        //DB 에서 데이터 가져오기
-        getPurchaseItemList();
-        getPurchaseArrayList(id);
-        adapter.setArrayList(purchaseArrayList);
     }
     
     public ArrayList<String> getStringArrayPref(String context, String key) {

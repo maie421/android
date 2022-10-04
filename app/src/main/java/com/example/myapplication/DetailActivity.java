@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import static com.example.myapplication.CouponItem.StringToBitmap;
+import static com.example.myapplication.CouponItem.getPurchaseArrayList;
 import static com.example.myapplication.CouponItem.insertPurchaseArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
@@ -47,6 +48,7 @@ public class DetailActivity extends AppCompatActivity {
     Button purchaseBtn;
 
     public static SharedPreferences preferences_purchase;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,19 +84,20 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         purchaseBtn.setOnClickListener(view -> {
-
+            preferences = getSharedPreferences("AutoUser", MODE_PRIVATE);
             ArrayList<String> data = new ArrayList<>();
-
+            id = preferences.getString("login_id", null);
             data.add(item.get(0));
             data.add(item.get(1));
             data.add(item.get(2));
             data.add(item.get(3));
             data.add(item.get(4));
-            data.add(item.get(5));
+            data.add(id);
             data.add(item.get(6));
 
             setStringArrayPref("Purchase", item.get(0), data);
             insertPurchaseArrayList(item);
+            getPurchaseArrayList(id);
             finish();
         });
     }
