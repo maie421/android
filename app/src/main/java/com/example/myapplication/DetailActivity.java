@@ -46,7 +46,7 @@ public class DetailActivity extends AppCompatActivity {
     ImageView imageview;
     Button purchaseBtn;
 
-    private SharedPreferences preferences;
+    public static SharedPreferences preferences_purchase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +100,8 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public ArrayList<String> getStringArrayPref(String context, String key) {
-        preferences = getSharedPreferences(context, MODE_PRIVATE);
-        String json = preferences.getString(key, null);
+        preferences_purchase = getSharedPreferences(context, MODE_PRIVATE);
+        String json = preferences_purchase.getString(key, null);
 
         ArrayList<String> urls = new ArrayList<String>();
         if (json != null) {
@@ -119,8 +119,8 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void setStringArrayPref(String context, String key, ArrayList<String> values) {
-        preferences = getSharedPreferences(context, MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
+        preferences_purchase = getSharedPreferences(context, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences_purchase.edit();
         JSONArray a = new JSONArray();
         for (int i = 0; i < values.size(); i++) {
             a.put(values.get(i));

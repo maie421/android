@@ -1,14 +1,18 @@
 package com.example.myapplication;
+import static android.content.Context.MODE_PRIVATE;
 import static com.example.myapplication.CouponItem.allArrayList;
 import static com.example.myapplication.CouponItem.giftArrayList;
 import static com.example.myapplication.CouponItem.itemArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
+import static com.example.myapplication.DetailActivity.preferences_purchase;
 import static com.example.myapplication.MainActivity.mainAdapter;
+import static com.example.myapplication.MainActivity.preferences;
 import static com.example.myapplication.MyPageActivity.adapter;
 import static com.example.myapplication.MyPageActivity.mypage_type;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
@@ -30,7 +34,6 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
     ImageView imageview;
     RecyclerView recyclerView;
     Button button;
-    Bitmap bitmap;
 
     public MyPageViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -47,8 +50,7 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
         button.setOnClickListener(view -> {
             int position = getAdapterPosition();
             int i;
-            int j;
-            int g;
+
             if (Objects.equals(mypage_type, "MY_COUPON")){
                 for (i =0 ;i< allArrayList.size();i++){
                     if (Objects.equals(allArrayList.get(i).title, titleView.getText().toString())){
@@ -56,18 +58,11 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
                         break;
                     }
                 }
-//                for (g =0 ;g< giftArrayList.size();g++){
-//                    if (Objects.equals(giftArrayList.get(g).title, titleView.getText().toString())){
-//                        giftArrayList.remove(g);
-//                        break;
-//                    }
-//                }
-//                for (j =0 ;j< itemArrayList.size();j++){
-//                    if (Objects.equals(itemArrayList.get(j).title, titleView.getText().toString())){
-//                        itemArrayList.remove(j);
-//                        break;
-//                    }
-//                }
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.remove(titleView.getText().toString());
+                editor.commit();
+
                 myItemArrayList.remove(position);
                 mainAdapter.notifyDataSetChanged();;
             }else {
@@ -77,6 +72,9 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
                         break;
                     }
                 }
+                SharedPreferences.Editor editor1 = preferences_purchase.edit();
+                editor1.remove(titleView.getText().toString());
+                editor1.commit();
             }
             adapter.notifyItemRemoved(position);
         });
