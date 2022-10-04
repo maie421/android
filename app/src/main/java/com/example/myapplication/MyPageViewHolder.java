@@ -56,18 +56,18 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
                         break;
                     }
                 }
-                for (g =0 ;g< giftArrayList.size();g++){
-                    if (Objects.equals(giftArrayList.get(g).title, titleView.getText().toString())){
-                        giftArrayList.remove(g);
-                        break;
-                    }
-                }
-                for (j =0 ;j< itemArrayList.size();j++){
-                    if (Objects.equals(itemArrayList.get(j).title, titleView.getText().toString())){
-                        itemArrayList.remove(j);
-                        break;
-                    }
-                }
+//                for (g =0 ;g< giftArrayList.size();g++){
+//                    if (Objects.equals(giftArrayList.get(g).title, titleView.getText().toString())){
+//                        giftArrayList.remove(g);
+//                        break;
+//                    }
+//                }
+//                for (j =0 ;j< itemArrayList.size();j++){
+//                    if (Objects.equals(itemArrayList.get(j).title, titleView.getText().toString())){
+//                        itemArrayList.remove(j);
+//                        break;
+//                    }
+//                }
                 myItemArrayList.remove(position);
                 mainAdapter.notifyDataSetChanged();;
             }else {

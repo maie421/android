@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,11 +32,14 @@ public class MyPageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     TextView forSaleView;
     TextView purchaseView;
+    Button signoutButton;
+    private SharedPreferences preferences_auto;
+    private SharedPreferences preferences;
+
     public static String mypage_type = "PURCHASE";
     String id;
     RecyclerView recyclerView;
     public static MyPageViewAdapter adapter;
-    public SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,10 @@ public class MyPageActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         forSaleView = findViewById(R.id.forSaleView);
         purchaseView = findViewById(R.id.purchaseView);
+        signoutButton = findViewById(R.id.logoutButton);
+
+        preferences = getSharedPreferences("User", MODE_PRIVATE);
+        preferences_auto = getSharedPreferences("AutoUser", MODE_PRIVATE);
 
         Intent intent = getIntent(); /*데이터 수신*/
 
@@ -76,6 +84,19 @@ public class MyPageActivity extends AppCompatActivity {
             adapter.setArrayList(purchaseArrayList);
             mypage_type = "PURCHASE";
             adapter.notifyDataSetChanged();
+        });
+        signoutButton.setOnClickListener(view -> {
+            SharedPreferences.Editor editor_auto = preferences_auto.edit();
+            SharedPreferences.Editor editor = preferences.edit();
+
+            editor_auto.remove("login_id");
+            editor.remove(id);
+            editor_auto.commit();
+            editor.commit();
+
+            Intent intent_init = new Intent(getApplicationContext(), InitActivity.class);
+            finishAffinity();
+            startActivity(intent_init);
         });
     }
 
