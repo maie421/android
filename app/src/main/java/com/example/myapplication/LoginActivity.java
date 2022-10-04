@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText email;
     EditText password;
     private SharedPreferences preferences;
+    private SharedPreferences preferences_auto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         Button loginBtn = findViewById(R.id.login);
 
         preferences = getSharedPreferences("User", MODE_PRIVATE);
+        preferences_auto = getSharedPreferences("AutoUser", MODE_PRIVATE);
 
         loginBtn.setOnClickListener(view -> {
             if (email.getText().toString().replace(" ", "").equals("")) {
@@ -47,6 +49,11 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호가 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            SharedPreferences.Editor editor = preferences_auto.edit();
+
+            editor.putString("login_id",email.getText().toString());
+            editor.commit();
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             finishAffinity();

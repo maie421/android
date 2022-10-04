@@ -16,6 +16,7 @@ public class JoinActivity extends AppCompatActivity {
     EditText password;
     EditText passwordTmp;
     private SharedPreferences preferences;
+    private SharedPreferences preferences_auto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +41,17 @@ public class JoinActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "비밀번호를 재입력해주세요", Toast.LENGTH_SHORT).show();
                 return;
             }
-
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            finishAffinity();
             SharedPreferences.Editor editor = preferences.edit();
 
             editor.putString(email.getText().toString(), password.getText().toString());
             editor.commit();
+            SharedPreferences.Editor editor_auto = preferences_auto.edit();
 
+            editor_auto.putString("login_id",email.getText().toString());
+            editor_auto.commit();
+
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            finishAffinity();
             intent.putExtra("id",email.getText().toString()); /*송신*/
             startActivity(intent);
         });
