@@ -139,6 +139,9 @@ public class MainActivity extends AppCompatActivity {
         giftBm = BitmapFactory.decodeStream(gift) ;
         itemBm = BitmapFactory.decodeStream(item) ;
 
+        Intent intent = getIntent();
+        id = intent.getExtras().getString("id");
+
 //        for (int i = 0; i < 10; i++) {
 //            ArrayList<String> data = new ArrayList<>();
 //            ArrayList<String> item_data = new ArrayList<>();
@@ -176,8 +179,7 @@ public class MainActivity extends AppCompatActivity {
 
         mainAdapter.setArrayList(allArrayList);
 
-        Intent intent = getIntent();
-        id = intent.getExtras().getString("id");
+
 
     }
 

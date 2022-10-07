@@ -30,6 +30,7 @@ public class JoinActivity extends AppCompatActivity {
         Button joinBtn = findViewById(R.id.joinBtn);
 
         preferences = getSharedPreferences("User", MODE_PRIVATE);
+        preferences_auto = getSharedPreferences("AutoUser", MODE_PRIVATE);
 
         joinBtn.setOnClickListener(view -> {
             if (email.getText().toString().replace(" ", "").equals("")){
