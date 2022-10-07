@@ -5,9 +5,9 @@ import static com.example.myapplication.CouponItem.giftArrayList;
 import static com.example.myapplication.CouponItem.itemArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
-import static com.example.myapplication.DetailActivity.preferences_purchase;
 import static com.example.myapplication.MainActivity.mainAdapter;
 import static com.example.myapplication.MainActivity.preferences;
+import static com.example.myapplication.MainActivity.preferences_purchase;
 import static com.example.myapplication.MyPageActivity.adapter;
 import static com.example.myapplication.MyPageActivity.mypage_type;
 

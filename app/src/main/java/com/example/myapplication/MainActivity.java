@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     public static GridViewAdapter mainAdapter;
-
+    public static SharedPreferences preferences_purchase;
     public static SharedPreferences preferences;
 
     byte[] byteArray;
@@ -169,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
         preferences = getSharedPreferences("Item", MODE_PRIVATE);
+        preferences_purchase = getSharedPreferences("Purchase", MODE_PRIVATE);
         Map<String,?> keys = preferences.getAll();
         for(Map.Entry<String,?> entry : keys.entrySet()){
             CouponItem.insertItemArrayList(getStringArrayPref("Item",entry.getKey()));
