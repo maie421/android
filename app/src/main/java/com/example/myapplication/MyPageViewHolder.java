@@ -4,6 +4,7 @@ import static com.example.myapplication.CouponItem.allArrayList;
 import static com.example.myapplication.CouponItem.giftArrayList;
 import static com.example.myapplication.CouponItem.itemArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
+import static com.example.myapplication.CouponItem.purchaseAllArrayList;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
 import static com.example.myapplication.MainActivity.mainAdapter;
 import static com.example.myapplication.MainActivity.preferences;
@@ -69,6 +70,12 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
                 for (int p =0 ;p< purchaseArrayList.size();p++){
                     if (Objects.equals(purchaseArrayList.get(p).title, titleView.getText().toString())){
                         purchaseArrayList.remove(p);
+                        break;
+                    }
+                }
+                for (int p =0 ;p< purchaseAllArrayList.size();p++){
+                    if (Objects.equals(purchaseAllArrayList.get(p).title, titleView.getText().toString())){
+                        purchaseAllArrayList.remove(p);
                         break;
                     }
                 }
