@@ -157,6 +157,7 @@ public class ProductActivity extends AppCompatActivity {
             data.add(spinner.getSelectedItem().toString());
             data.add(id);
             data.add(BitmapToString(bitmap));
+            data.add(date.getText().toString());
             setStringArrayPref("Item",  title.getText().toString(), data);
 
             intent.putExtra("id",id);
@@ -167,7 +168,7 @@ public class ProductActivity extends AppCompatActivity {
             intent.putExtra("type", spinner.getSelectedItem().toString());
             intent.putExtra("image", byteArray);
 
-            allArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(),spinner.getSelectedItem().toString(), id,bitmap));
+            allArrayList.add(0,new CouponItem(title.getText().toString(), company.getText().toString(), price.getText().toString(), salePrice.getText().toString(),spinner.getSelectedItem().toString(), id,bitmap,date.getText().toString()));
 
             setResult(RESULT_OK,intent);
             finish();

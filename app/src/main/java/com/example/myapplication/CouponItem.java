@@ -18,6 +18,7 @@ public class CouponItem {
     public Bitmap bitmap;
     public String type;
     public String member_idx;
+    public String datetime;
     public static ArrayList<CouponItem> itemArrayList = new ArrayList<>();
     public static ArrayList<CouponItem> giftArrayList = new ArrayList<>();
     public static ArrayList<CouponItem> allArrayList = new ArrayList<>();
@@ -25,7 +26,7 @@ public class CouponItem {
     public static ArrayList<CouponItem> purchaseAllArrayList = new ArrayList<>();
     public static ArrayList<CouponItem> myItemArrayList = new ArrayList<>();
 
-    public CouponItem(String title, String company, String price, String salePrice, String type, String member_idx, Bitmap bitmap) {
+    public CouponItem(String title, String company, String price, String salePrice, String type, String member_idx, Bitmap bitmap, String datetime) {
         this.title = title;
         this.company = company;
         this.price = price;
@@ -33,6 +34,7 @@ public class CouponItem {
         this.bitmap = bitmap;
         this.type = type;
         this.member_idx = member_idx;
+        this.datetime = datetime;
     }
 
     public static void insertItemArrayList(Bitmap item) {
@@ -50,7 +52,7 @@ public class CouponItem {
         giftArrayList.clear();
         for (int i =0 ;i< allArrayList.size();i++){
             if (Objects.equals(allArrayList.get(i).type, "쿠폰")){
-                giftArrayList.add(new CouponItem(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price,allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap));
+                giftArrayList.add(new CouponItem(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price,allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap, allArrayList.get(i).datetime));
             }
         }
     }
@@ -59,7 +61,7 @@ public class CouponItem {
         itemArrayList.clear();
         for (int i =0 ;i< allArrayList.size();i++){
             if (Objects.equals(allArrayList.get(i).type, "상품")){
-                itemArrayList.add(new CouponItem(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price,allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap));
+                itemArrayList.add(new CouponItem(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price,allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap,allArrayList.get(i).datetime));
             }
         }
     }
@@ -68,7 +70,7 @@ public class CouponItem {
         purchaseArrayList.clear();
         for (int i =0 ;i< purchaseAllArrayList.size();i++){
             if (Objects.equals(purchaseAllArrayList.get(i).member_idx, member_idx)){
-                purchaseArrayList.add(new CouponItem(purchaseAllArrayList.get(i).title, purchaseAllArrayList.get(i).company,purchaseAllArrayList.get(i).price,purchaseAllArrayList.get(i).salePrice,purchaseAllArrayList.get(i).type,purchaseAllArrayList.get(i).member_idx,purchaseAllArrayList.get(i).bitmap));
+                purchaseArrayList.add(new CouponItem(purchaseAllArrayList.get(i).title, purchaseAllArrayList.get(i).company,purchaseAllArrayList.get(i).price,purchaseAllArrayList.get(i).salePrice,purchaseAllArrayList.get(i).type,purchaseAllArrayList.get(i).member_idx,purchaseAllArrayList.get(i).bitmap,purchaseAllArrayList.get(i).datetime));
             }
         }
     }
@@ -77,17 +79,17 @@ public class CouponItem {
         myItemArrayList.clear();
         for (int i =0 ;i< allArrayList.size();i++){
             if (Objects.equals(allArrayList.get(i).member_idx, member_idx)){
-                myItemArrayList.add(new CouponItem(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price,allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap));
+                myItemArrayList.add(new CouponItem(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price,allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap, allArrayList.get(i).datetime));
             }
         }
     }
 
     public static void insertItemArrayList(ArrayList<String> item) {
-        allArrayList.add(new CouponItem(item.get(0), item.get(1), item.get(2), item.get(3),item.get(4),item.get(5),StringToBitmap(item.get(6))));
+        allArrayList.add(new CouponItem(item.get(0), item.get(1), item.get(2), item.get(3),item.get(4),item.get(5),StringToBitmap(item.get(6)),item.get(7)));
     }
 
     public static void insertPurchaseArrayList(ArrayList<String> item) {
-        purchaseAllArrayList.add(new CouponItem(item.get(0), item.get(1), item.get(2), item.get(3),item.get(4),item.get(5),StringToBitmap(item.get(6))));
+        purchaseAllArrayList.add(new CouponItem(item.get(0), item.get(1), item.get(2), item.get(3),item.get(4),item.get(5),StringToBitmap(item.get(6)),item.get(7)));
     }
 
     public static Bitmap StringToBitmap(String encodedString) {
