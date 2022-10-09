@@ -46,6 +46,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView salePriceView;
     ImageView imageview;
     Button purchaseBtn;
+    TextView dateView;
 
     private SharedPreferences preferences;
 
@@ -72,11 +73,13 @@ public class DetailActivity extends AppCompatActivity {
         salePriceView = findViewById(R.id.salePrice);
         imageview = findViewById(R.id.imageView);
         purchaseBtn = findViewById(R.id.purchase);
+        dateView = findViewById(R.id.date);
 
         titleView.setText(item.get(0));
         companyView.setText(item.get(1));
         priceView.setText(item.get(2));
         salePriceView.setText(item.get(3));
+        dateView.setText(item.get(7));
 
         if (item.get(6) != null) {
             imageview.setImageBitmap(StringToBitmap(item.get(6)));
@@ -93,6 +96,7 @@ public class DetailActivity extends AppCompatActivity {
             data.add(item.get(4));
             data.add(id);
             data.add(item.get(6));
+            data.add(item.get(7));
 
             setStringArrayPref("Purchase", item.get(0), data);
             insertPurchaseArrayList(item);

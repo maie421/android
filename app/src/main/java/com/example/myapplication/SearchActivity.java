@@ -59,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
                 filterArrayList.clear();
                 for (int i =0 ; i < allArrayList.size(); i++){
                     if (allArrayList.get(i).title.contains(s)){
-                        insertFilterArrayList(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price, allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap);
+                        insertFilterArrayList(allArrayList.get(i).title, allArrayList.get(i).company,allArrayList.get(i).price, allArrayList.get(i).salePrice,allArrayList.get(i).type,allArrayList.get(i).member_idx,allArrayList.get(i).bitmap,allArrayList.get(i).datetime);
                     }
 
                 }
@@ -109,7 +109,7 @@ public class SearchActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.menu_search);
         adapter.setArrayList(allArrayList);
     }
-    public void insertFilterArrayList(String title, String company, String price, String salePrice, String type, String member_idx, Bitmap bitmap) {
-        filterArrayList.add(new CouponItem(title, company,price, salePrice,type,member_idx,bitmap));
+    public void insertFilterArrayList(String title, String company, String price, String salePrice, String type, String member_idx, Bitmap bitmap,String datetime) {
+        filterArrayList.add(new CouponItem(title, company,price, salePrice,type,member_idx,bitmap,datetime));
     }
 }
