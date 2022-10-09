@@ -18,6 +18,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Base64;
 import android.util.Log;
@@ -69,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
     public static GridViewAdapter mainAdapter;
     public static SharedPreferences preferences_purchase;
     public static SharedPreferences preferences;
+
+    Handler handler = new Handler();
+
+    int i = 0;
 
     byte[] byteArray;
 
@@ -226,13 +231,42 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        bottomNavigationView.setSelectedItemId(R.id.home);
-    }
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (i == 0){
+                                banner.setImageResource(R.drawable.banner);
+                            }
+                            if (i == 1){
+                                banner.setImageResource(R.drawable.banner2);
+                            }
+                            if (i == 2){
+                                banner.setImageResource(R.drawable.banner3);
+                            }
+                            if (i == 3){
+                                banner.setImageResource(R.drawable.banner4);
+                            }
+                        }
+                    });
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        banner.setImageResource(R.drawable.banner2);
+                    try {
+                        Thread.sleep(4000);
+                        i++;
+                        if (i == 4){
+                            i = 0;
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        thread.start();
+
     }
 
     @Override
