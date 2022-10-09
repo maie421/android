@@ -8,46 +8,58 @@
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginBottom="38dp"
+        android:layout_marginBottom="43dp"
         android:text="기판매"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="103dp"
-        android:layout_height="147dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/company"
+        android:layout_width="127dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22"
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/company"
+        android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="스타벅스"
+        android:layout_marginBottom="19dp"
+        android:text="2022:08:22:01"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/price"
+        app:layout_constraintBottom_toTopOf="@+id/company"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
+        android:id="@+id/company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginBottom="15dp"
+        android:text="스타벅스"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/price"
+        app:layout_constraintStart_toStartOf="@+id/time"
+        app:layout_constraintTop_toBottomOf="@+id/time" />
+
+    <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:layout_marginBottom="34dp"
+        android:layout_marginBottom="28dp"
         android:text="[GIFT] 무료 음료 쿠폰"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/purchase"
@@ -59,37 +71,29 @@
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="17dp"
         android:text="4,800 원"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/salePrice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/company"
         app:layout_constraintTop_toBottomOf="@+id/company" />
 
     <TextView
         android:id="@+id/salePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginBottom="42dp"
         android:text="5,000 원"
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/price"
         app:layout_constraintTop_toBottomOf="@+id/price" />
 
     <Button
         android:id="@+id/purchase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="103dp"
+        android:layout_marginBottom="44dp"
         android:text="구매"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

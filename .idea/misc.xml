@@ -12,13 +12,13 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.347" />
         <entry key="app/src/main/res/drawable/menu_item_color.xml" value="0.3225" />
         <entry key="app/src/main/res/layout-w936dp/activity_main.xml" value="0.34868421052631576" />
-        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_init.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_join.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_my_page.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_product.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_product.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_table.xml" value="0.3619791666666667" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.37604166666666666" />
