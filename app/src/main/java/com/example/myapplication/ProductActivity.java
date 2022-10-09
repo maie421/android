@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -24,6 +25,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,6 +40,7 @@ import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -48,6 +51,7 @@ public class ProductActivity extends AppCompatActivity {
     TextView price;
     TextView salePrice;
     Button submitBtn;
+    Button date;
     ImageView imageView;
     String id;
     Bitmap img;
@@ -66,9 +70,33 @@ public class ProductActivity extends AppCompatActivity {
         init(); //객체 정의
         SettingListener(); //리스너 등록
         ClickBtn();
+        CalendarBtn();
 
         //맨 처음 시작할 탭 설정
         bottomNavigationView.setSelectedItemId(R.id.add);
+    }
+
+    private void CalendarBtn() {
+        Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                date.setText(year+"-" + (month+1) + "-"+dayOfMonth );
+            }
+        }, mYear, mMonth, mDay);
+
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (date.isClickable()) {
+                    datePickerDialog.show();
+                }
+            }
+        });
     }
 
 
@@ -80,6 +108,7 @@ public class ProductActivity extends AppCompatActivity {
         salePrice = findViewById(R.id.salePrice);
         submitBtn = findViewById(R.id.submit);
         imageView = findViewById(R.id.img);
+        date = findViewById(R.id.date);
 
         arrayList = new ArrayList<>();
         arrayList.add("상품");
