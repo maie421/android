@@ -1,44 +1,38 @@
 package com.example.myapplication;
 
-import static com.example.myapplication.CouponItem.StringToBitmap;
 import static com.example.myapplication.CouponItem.getPurchaseArrayList;
 import static com.example.myapplication.CouponItem.insertPurchaseArrayList;
-import static com.example.myapplication.CouponItem.myItemArrayList;
-import static com.example.myapplication.CouponItem.purchaseArrayList;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Base64;
-import android.view.MenuItem;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.io.ByteArrayOutputStream;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     String id;
     String title;
-    String company;
-    String price;
-    String salePrice;
-
-    byte[] byteArray;
-    Bitmap bitmap;
 
     TextView titleView;
     TextView companyView;
@@ -47,6 +41,9 @@ public class DetailActivity extends AppCompatActivity {
     ImageView imageview;
     Button purchaseBtn;
     TextView dateView;
+    String dateTmp;
+    int sec;
+    Handler handler = new Handler();
 
     private SharedPreferences preferences;
 
@@ -58,6 +55,30 @@ public class DetailActivity extends AppCompatActivity {
         init(); //객체 정의
     }
 
+    private void dateTimeHandler() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            dateFormat(sec--);
+                        }
+                    });
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        thread.start();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void init() {
         bottomNavigationView = findViewById(R.id.menu_bottom_navigation);
         Intent intent = getIntent();
@@ -81,6 +102,8 @@ public class DetailActivity extends AppCompatActivity {
         salePriceView.setText(item.get(3));
         dateView.setText(item.get(7));
 
+        dateTmp = (String) dateView.getText();
+
         if (item.get(6) != null) {
             imageview.setImageBitmap(StringToBitmap(item.get(6)));
         }
@@ -103,6 +126,25 @@ public class DetailActivity extends AppCompatActivity {
             getPurchaseArrayList(id);
             finish();
         });
+
+        String[] date = item.get(7).split("-");
+        LocalDateTime startDate = LocalDateTime.now();
+        LocalDateTime endDate = LocalDateTime.of(Integer.parseInt(date[0]),Integer.parseInt(date[1]),Integer.parseInt(date[2]),23,59,59);
+
+        sec = (int) Duration.between(endDate,startDate).getSeconds()*-1;
+        if (ChronoUnit.DAYS.between(startDate, endDate) == 0){
+            dateTimeHandler();
+
+        }
+
+    }
+
+    private void dateFormat(int sec) {
+        int min = sec / 60;
+        int hour = min / 60;
+        sec = sec % 60;
+        min = min % 60;
+        dateView.setText( dateTmp + String.format(" %d:%d:%d", hour, min, sec));
     }
 
     public ArrayList<String> getStringArrayPref(String context, String key) {
