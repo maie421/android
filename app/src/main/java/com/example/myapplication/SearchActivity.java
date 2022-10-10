@@ -25,7 +25,6 @@ public class SearchActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ViewAdapter adapter;
     public ArrayList<CouponItem> filterArrayList = new ArrayList<>();
-//    ArrayList<CouponItem> itemArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

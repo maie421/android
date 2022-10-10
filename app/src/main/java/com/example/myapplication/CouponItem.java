@@ -37,17 +37,6 @@ public class CouponItem {
         this.datetime = datetime;
     }
 
-    public static void insertItemArrayList(Bitmap item) {
-        for (int i = 0; i < 10; i++) {
-//            itemArrayList.add(new CouponItem("카페아메리카노 Tall", "스타벅스", "4100", "3500", item));
-        }
-    }
-
-    public static void insertgiftArrayList(Bitmap gift) {
-        for (int i = 0; i < 10; i++) {
-//            giftArrayList.add(new CouponItem("5000원 쿠폰", "배달의 민족", "5000", "2000", gift));
-        }
-    }
     public static void getGiftArrayList() {
         giftArrayList.clear();
         for (int i =0 ;i< allArrayList.size();i++){

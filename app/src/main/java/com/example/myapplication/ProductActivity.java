@@ -148,7 +148,6 @@ public class ProductActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
             ArrayList<String> data = new ArrayList<>();
-            ArrayList<String> item_data = new ArrayList<>();
 
             data.add(title.getText().toString());
             data.add(company.getText().toString());

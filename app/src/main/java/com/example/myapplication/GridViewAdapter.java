@@ -12,16 +12,6 @@ import java.util.ArrayList;
 public class GridViewAdapter extends RecyclerView.Adapter<ViewHolder>  {
     private ArrayList<CouponItem> couponList;
 
-    //    @NonNull
-//    @Override
-//    public ViewHorder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        Context context = parent.getContext();
-//        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View view = inflater.inflate(R.layout.item_list, parent, false);
-//
-//        ViewHorder viewHorder = new ViewHorder(context, view);
-//        return viewHorder;
-//    }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
