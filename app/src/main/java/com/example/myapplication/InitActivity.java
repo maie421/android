@@ -89,7 +89,10 @@ public class InitActivity extends AppCompatActivity {
                     // 유저 정보가 정상 전달 되었을 경우
                     Log.i(TAG, "id " + user.getId());   // 유저의 고유 아이디를 불러옵니다.
                     Log.i(TAG, "invoke: nickname=" + user.getKakaoAccount().getProfile().getNickname());  // 유저의 닉네임을 불러옵니다.
-
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    finishAffinity();
+                    intent.putExtra("id", user.getKakaoAccount().getProfile().getNickname()); /*송신*/
+                    startActivity(intent);
                     // 이 부분에는 로그인이 정상적으로 되었을 경우 어떤 일을 수행할 지 적으면 됩니다.
                 }
                 if (throwable != null) {

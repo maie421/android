@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.kakao.sdk.user.UserApiClient;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -99,6 +100,8 @@ public class MyPageActivity extends AppCompatActivity {
             editor.remove(id);
             editor_auto.commit();
             editor.commit();
+
+            UserApiClient.getInstance().logout(error -> {return null;});
 
             Intent intent_init = new Intent(getApplicationContext(), InitActivity.class);
             finishAffinity();
