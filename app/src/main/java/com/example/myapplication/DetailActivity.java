@@ -40,6 +40,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView salePriceView;
     ImageView imageview;
     Button purchaseBtn;
+    Button mapBtn;
     TextView dateView;
     String dateTmp;
     int sec;
@@ -51,7 +52,6 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        Intent intent;
         init(); //객체 정의
     }
 
@@ -94,8 +94,8 @@ public class DetailActivity extends AppCompatActivity {
         salePriceView = findViewById(R.id.salePrice);
         imageview = findViewById(R.id.imageView);
         purchaseBtn = findViewById(R.id.purchase);
+        mapBtn = findViewById(R.id.map);
         dateView = findViewById(R.id.date);
-
         titleView.setText(item.get(0));
         companyView.setText(item.get(1));
         priceView.setText(item.get(2));
@@ -125,6 +125,12 @@ public class DetailActivity extends AppCompatActivity {
             insertPurchaseArrayList(item);
             getPurchaseArrayList(id);
             finish();
+        });
+
+        mapBtn.setOnClickListener(view -> {
+            Intent mapIntent = new Intent(getApplicationContext(), MapActivity.class);
+            mapIntent.putExtra("id",id); /*송신*/
+            startActivity(mapIntent);
         });
 
         String[] date = item.get(7).split("-");
