@@ -101,7 +101,7 @@ public class MyPageActivity extends AppCompatActivity {
             editor_auto.commit();
             editor.commit();
 
-            UserApiClient.getInstance().logout(error -> {return null;});
+            UserApiClient.getInstance().unlink(error -> {return null;});
 
             Intent intent_init = new Intent(getApplicationContext(), InitActivity.class);
             finishAffinity();
@@ -117,14 +117,6 @@ public class MyPageActivity extends AppCompatActivity {
             CouponItem.insertPurchaseArrayList(getStringArrayPref("Purchase",entry.getKey()));
         }
 
-    }
-
-    private void getMyItemList() {
-        preferences = getSharedPreferences("Item", MODE_PRIVATE);
-        Map<String,?> keys = preferences.getAll();
-        for(Map.Entry<String,?> entry : keys.entrySet()){
-            CouponItem.insertPurchaseArrayList(getStringArrayPref("Item",entry.getKey()));
-        }
     }
 
     private void SettingListener() {
