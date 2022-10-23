@@ -37,7 +37,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.addMarker(markerOptions);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));                 // 초기 위치
-//        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));                         // 줌의 정도
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));                         // 줌의 정도
 //        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);                           // 지도 유형 설정
     }
 }
