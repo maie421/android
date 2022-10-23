@@ -3,12 +3,15 @@ package com.example.myapplication;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -107,6 +110,14 @@ public class InitActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        //위치 권한 체크
+        if (Build.VERSION.SDK_INT >= 23 &&
+                ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{
+                    android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+        }
+
         preferences = getSharedPreferences("AutoUser", MODE_PRIVATE);
         if (preferences.getString("login_id", null) != null) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
