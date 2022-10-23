@@ -28,6 +28,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,11 +42,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private String place;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        Intent intent = getIntent(); /*데이터 수신*/
+        place = intent.getExtras().getString("place");
 
         SupportMapFragment mapFragment = (SupportMapFragment) this.getSupportFragmentManager().findFragmentById(R.id.mapView);
         mapFragment.getMapAsync(this);
@@ -55,15 +58,42 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
 
+        //주변 장소 찾기
+        Geocoder geocoder = new Geocoder(this);
+        List<Address> resultLocationList = null;
+        try {
+            resultLocationList = geocoder.getFromLocationName(place, 5);
+            for (Address resultLocation : resultLocationList){
+                double lat = resultLocation.getLatitude();
+                double lng = resultLocation.getLongitude();
+
+                MarkerOptions markerOptionsGeocoder = new MarkerOptions();
+                LatLng placeLatLng = new LatLng(lat, lng);
+                markerOptionsGeocoder
+                        .title(place)
+                        .position(placeLatLng);
+                mMap.addMarker(markerOptionsGeocoder);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //현재 위치 마크
         LatLng location = new LatLng(latitude, longitude);
 
-        MarkerOptions markerOptions = new MarkerOptions();         // 마커 생성
+        MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(location);
+        markerOptions.title("현재 위치");
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
         mMap.addMarker(markerOptions);
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));                 // 초기 위치
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-                        // 줌의 정도
-//        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);                           // 지도 유형 설정
+        //카메라
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,longitude), 15));
+
+
+
+
+
+
     }
 }

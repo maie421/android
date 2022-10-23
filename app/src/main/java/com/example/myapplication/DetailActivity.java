@@ -156,7 +156,7 @@ public class DetailActivity extends AppCompatActivity {
 
             Intent mapIntent = new Intent(getApplicationContext(), MapActivity.class);
             mapIntent.putExtra("id",id); /*송신*/
-            mapIntent.putExtra("id",item.get(1)); /*송신*/
+            mapIntent.putExtra("place",item.get(1)); /*송신*/
             startActivity(mapIntent);
         });
 

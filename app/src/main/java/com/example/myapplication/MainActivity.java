@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 //            ArrayList<String> item_data = new ArrayList<>();
 //
 //            data.add("카페아메리카노 Tall"+ i);
-//            data.add("스타벅스");
+//            data.add("스타벅스 낙성대DT점");
 //            data.add("4100");
 //            data.add("3500");
 //            data.add("상품");
