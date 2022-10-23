@@ -5,9 +5,12 @@ import static com.example.myapplication.CouponItem.insertPurchaseArrayList;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -19,6 +22,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -48,6 +53,10 @@ public class DetailActivity extends AppCompatActivity {
 
     private SharedPreferences preferences;
 
+    static double longitude;
+    static double latitude;
+
+    private FusedLocationProviderClient fusedLocationClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,8 +137,26 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         mapBtn.setOnClickListener(view -> {
+            //위치 권한 체크
+            if (Build.VERSION.SDK_INT >= 23 &&
+                    ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(DetailActivity.this, new String[]{
+                        android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+            }
+
+            //현재 위치
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+            fusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, location -> {
+                        if (location != null) {
+                            longitude = location.getLongitude();//위도
+                            latitude = location.getLatitude();//경도
+                        }
+                    });
+
             Intent mapIntent = new Intent(getApplicationContext(), MapActivity.class);
             mapIntent.putExtra("id",id); /*송신*/
+            mapIntent.putExtra("id",item.get(1)); /*송신*/
             startActivity(mapIntent);
         });
 
