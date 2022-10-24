@@ -162,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //            item_data.add("5000원 쿠폰"+ i);
 //            item_data.add("배달의 민족");
+//            item_data.add("배달의 민족");
 //            item_data.add("5000");
 //            item_data.add("2000");
 //            item_data.add("쿠폰");

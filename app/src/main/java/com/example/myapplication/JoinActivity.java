@@ -46,8 +46,8 @@ public class JoinActivity extends AppCompatActivity {
 
             editor.putString(email.getText().toString(), password.getText().toString());
             editor.commit();
-            SharedPreferences.Editor editor_auto = preferences_auto.edit();
 
+            SharedPreferences.Editor editor_auto = preferences_auto.edit();
             editor_auto.putString("login_id",email.getText().toString());
             editor_auto.commit();
 

@@ -11,13 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="23dp"
         android:text="홍길동 주인님"
         android:textColor="@color/black"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView14"
-        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,61 +22,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="145dp"
         android:text="반가워요."
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginBottom="36dp"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/purchaseView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/forSaleView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         android:text="판매 쿠폰"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintStart_toEndOf="@+id/purchaseView"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
         android:id="@+id/purchaseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="16dp"
         android:text="구매 쿠폰"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintEnd_toStartOf="@+id/forSaleView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/forSaleView"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu_bottom_navigation"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="2dp"
         app:itemIconTint="@drawable/menu_item_color"
         app:itemTextColor="@drawable/menu_item_color"
         app:labelVisibilityMode="labeled"
@@ -91,23 +65,23 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="407dp"
+        android:layout_height="293dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="37dp"
+        app:layout_constraintBottom_toTopOf="@+id/menu_bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forSaleView" />
+        app:layout_constraintTop_toTopOf="@+id/purchaseView" />
 
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="69dp"
         android:text="로그아웃"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/title"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
