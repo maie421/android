@@ -6,12 +6,9 @@ import static com.example.myapplication.CouponItem.giftArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
@@ -19,16 +16,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.util.Base64;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -55,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     Bitmap bitmap;
     Bitmap itemBm;
     Bitmap giftBm;
+    Bitmap gift1Bm;
 
     TextView titleView;
     TextView companyView;
@@ -134,47 +128,50 @@ public class MainActivity extends AppCompatActivity {
         AssetManager am = getResources().getAssets() ;
         InputStream gift = null;
         InputStream item = null;
+        InputStream gift1 = null;
         try {
-            gift = am.open("배민.jpeg");
+            gift = am.open("배민.png");
             item = am.open("coffee.png");
+            gift1 = am.open("교촌_치킨.png");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         giftBm = BitmapFactory.decodeStream(gift) ;
         itemBm = BitmapFactory.decodeStream(item) ;
+        gift1Bm = BitmapFactory.decodeStream(gift1) ;
 
         Intent intent = getIntent();
         id = intent.getExtras().getString("id");
 
-//        for (int i = 0; i < 10; i++) {
-//            ArrayList<String> data = new ArrayList<>();
-//            ArrayList<String> item_data = new ArrayList<>();
-//
-//            data.add("카페아메리카노 Tall"+ i);
-//            data.add("스타벅스 낙성대DT점");
-//            data.add("4100");
-//            data.add("3500");
-//            data.add("상품");
-//            data.add(id);
-//            data.add(BitmapToString(itemBm));
-//            data.add("2022-10-10");
-//
-//            item_data.add("5000원 쿠폰"+ i);
-//            item_data.add("배달의 민족");
-//            item_data.add("배달의 민족");
-//            item_data.add("5000");
-//            item_data.add("2000");
-//            item_data.add("쿠폰");
-//            item_data.add(id);
-//            item_data.add(BitmapToString(giftBm));
-//            item_data.add("2022-10-10");
-//
-//            setStringArrayPref("Item", "카페아메리카노 Tall"+ i , data);
-//            setStringArrayPref("Item", "5000원 쿠폰"+ i , item_data);
-//
-//
-//        }
+        for (int i = 0; i < 10; i++) {
+            ArrayList<String> data = new ArrayList<>();
+            ArrayList<String> item_data = new ArrayList<>();
+
+            data.add("카페아메리카노 Tall"+ i);
+            data.add("스타벅스 낙성대DT점");
+            data.add("4100");
+            data.add("3500");
+            data.add("상품");
+            data.add(id);
+            data.add(BitmapToString(itemBm));
+            data.add("2022-10-28");
+
+            item_data.add("5000원 쿠폰"+ i);
+            item_data.add("배달의 민족");
+            item_data.add("배달의 민족");
+            item_data.add("5000");
+            item_data.add("2000");
+            item_data.add("쿠폰");
+            item_data.add(id);
+            item_data.add(BitmapToString(giftBm));
+            item_data.add("2022-10-28");
+
+            setStringArrayPref("Item", "카페아메리카노 Tall"+ i , data);
+            setStringArrayPref("Item", "5000원 쿠폰"+ i , item_data);
+
+
+        }
 
         preferences = getSharedPreferences("Item", MODE_PRIVATE);
         preferences_purchase = getSharedPreferences("Purchase", MODE_PRIVATE);

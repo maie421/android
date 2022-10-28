@@ -38,7 +38,6 @@ import java.util.List;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
-    private Geocoder geocoder;
     private String place;
 
 
@@ -63,7 +62,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         List<Address> resultLocationList = null;
         try {
             resultLocationList = geocoder.getFromLocationName(place, 5);
-            for (Address resultLocation : resultLocationList){
+            for (Address resultLocation : resultLocationList) {
                 double lat = resultLocation.getLatitude();
                 double lng = resultLocation.getLongitude();
 
@@ -82,17 +81,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         LatLng location = new LatLng(latitude, longitude);
 
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(location);
-        markerOptions.title("현재 위치");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+        markerOptions.position(location)
+                .title("현재 위치")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
         mMap.addMarker(markerOptions);
 
         //카메라
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,longitude), 15));
-
-
-
-
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15));
 
 
     }

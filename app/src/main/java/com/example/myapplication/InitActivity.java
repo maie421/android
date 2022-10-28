@@ -57,11 +57,11 @@ public class InitActivity extends AppCompatActivity {
             //로그인 성공
             if (token != null) {
                 Log.i("user", token.getAccessToken() + " " + token.getRefreshToken());
+                updateKakaoLoginUi();
             }
             if (error != null) {
                 Log.w(TAG, "invoke: " + error.getLocalizedMessage());
             }
-            updateKakaoLoginUi();
 
             return null;
         };
@@ -82,7 +82,7 @@ public class InitActivity extends AppCompatActivity {
 
     }
 
-    // 카카오 UI 가져오는 메소드
+    // 카카오 ui
     public void updateKakaoLoginUi() {
         UserApiClient.getInstance().me((user, throwable) -> {
             //성공
