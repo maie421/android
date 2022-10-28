@@ -143,35 +143,35 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getExtras().getString("id");
-
-        for (int i = 0; i < 10; i++) {
-            ArrayList<String> data = new ArrayList<>();
-            ArrayList<String> item_data = new ArrayList<>();
-
-            data.add("카페아메리카노 Tall"+ i);
-            data.add("스타벅스 낙성대DT점");
-            data.add("4100");
-            data.add("3500");
-            data.add("상품");
-            data.add(id);
-            data.add(BitmapToString(itemBm));
-            data.add("2022-10-28");
-
-            item_data.add("5000원 쿠폰"+ i);
-            item_data.add("배달의 민족");
-            item_data.add("배달의 민족");
-            item_data.add("5000");
-            item_data.add("2000");
-            item_data.add("쿠폰");
-            item_data.add(id);
-            item_data.add(BitmapToString(giftBm));
-            item_data.add("2022-10-28");
-
-            setStringArrayPref("Item", "카페아메리카노 Tall"+ i , data);
-            setStringArrayPref("Item", "5000원 쿠폰"+ i , item_data);
-
-
-        }
+//
+//        for (int i = 0; i < 10; i++) {
+//            ArrayList<String> data = new ArrayList<>();
+//            ArrayList<String> item_data = new ArrayList<>();
+//
+//            data.add("카페아메리카노 Tall"+ i);
+//            data.add("스타벅스 낙성대DT점");
+//            data.add("4100");
+//            data.add("3500");
+//            data.add("상품");
+//            data.add(id);
+//            data.add(BitmapToString(itemBm));
+//            data.add("2022-10-28");
+//
+//            item_data.add("5000원 쿠폰"+ i);
+//            item_data.add("배달의 민족");
+//            item_data.add("배달의 민족");
+//            item_data.add("5000");
+//            item_data.add("2000");
+//            item_data.add("쿠폰");
+//            item_data.add(id);
+//            item_data.add(BitmapToString(giftBm));
+//            item_data.add("2022-10-28");
+//
+//            setStringArrayPref("Item", "카페아메리카노 Tall"+ i , data);
+//            setStringArrayPref("Item", "5000원 쿠폰"+ i , item_data);
+//
+//
+//        }
 
         preferences = getSharedPreferences("Item", MODE_PRIVATE);
         preferences_purchase = getSharedPreferences("Purchase", MODE_PRIVATE);
