@@ -50,10 +50,10 @@ public class barcodeActivity extends AppCompatActivity {
 
         title = intent.getExtras().getString("title");
 
-        //바코드 생성
-        barCodeView.setImageBitmap(textToBarCode(title));
-
         ArrayList<String> item = getStringArrayPref("Item", title);
+
+        //바코드 생성
+        barCodeView.setImageBitmap(textToBarCode(item.get(1)));
 
         titleView = findViewById(R.id.titleView);
         companyView = findViewById(R.id.companyView);
