@@ -1,4 +1,5 @@
 package com.example.myapplication;
+
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.myapplication.CouponItem.allArrayList;
 import static com.example.myapplication.CouponItem.giftArrayList;
@@ -48,13 +49,14 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
 
         button = itemView.findViewById(R.id.imageButton);
 
+        //삭제 버튼
         button.setOnClickListener(view -> {
             int position = getAdapterPosition();
             int i;
 
-            if (Objects.equals(mypage_type, "MY_COUPON")){
-                for (i =0 ;i< allArrayList.size();i++){
-                    if (Objects.equals(allArrayList.get(i).title, titleView.getText().toString())){
+            if (Objects.equals(mypage_type, "MY_COUPON")) {
+                for (i = 0; i < allArrayList.size(); i++) {
+                    if (Objects.equals(allArrayList.get(i).title, titleView.getText().toString())) {
                         allArrayList.remove(i);
                         break;
                     }
@@ -65,16 +67,16 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
                 editor.commit();
 
                 myItemArrayList.remove(position);
-                mainAdapter.notifyDataSetChanged();;
-            }else {
-                for (int p =0 ;p< purchaseArrayList.size();p++){
-                    if (Objects.equals(purchaseArrayList.get(p).title, titleView.getText().toString())){
+                mainAdapter.notifyDataSetChanged();
+            } else {
+                for (int p = 0; p < purchaseArrayList.size(); p++) {
+                    if (Objects.equals(purchaseArrayList.get(p).title, titleView.getText().toString())) {
                         purchaseArrayList.remove(p);
                         break;
                     }
                 }
-                for (int p =0 ;p< purchaseAllArrayList.size();p++){
-                    if (Objects.equals(purchaseAllArrayList.get(p).title, titleView.getText().toString())){
+                for (int p = 0; p < purchaseAllArrayList.size(); p++) {
+                    if (Objects.equals(purchaseAllArrayList.get(p).title, titleView.getText().toString())) {
                         purchaseAllArrayList.remove(p);
                         break;
                     }
@@ -85,9 +87,16 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
             }
             adapter.notifyItemRemoved(position);
         });
+
+        imageview.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), barcodeActivity.class);
+            intent.putExtra("title", titleView.getText().toString());
+            Log.d("TAG",titleView.getText().toString());
+            view.getContext().startActivity(intent);
+        });
     }
 
-    void onBind(CouponItem item){
+    void onBind(CouponItem item) {
         titleView.setText(item.title);
         companyView.setText(item.company);
         priceView.setText(item.price);

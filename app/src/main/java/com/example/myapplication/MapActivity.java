@@ -57,7 +57,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
 
-        //주변 장소 찾기
+        //장소 찾기
         Geocoder geocoder = new Geocoder(this);
         List<Address> resultLocationList = null;
         try {

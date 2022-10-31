@@ -228,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
     //화면에 표시되기 직전
     @Override
     protected void onStart() {
+        bottomNavigationView.setSelectedItemId(R.id.home);
         super.onStart();
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -285,21 +286,6 @@ public class MainActivity extends AppCompatActivity {
                 mainAdapter.notifyItemInserted(0);
             }
         }
-    }
-
-    public void setStringArrayPref(String context, String key, ArrayList<String> values) {
-        preferences = getSharedPreferences(context, MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        JSONArray a = new JSONArray();
-        for (int i = 0; i < values.size(); i++) {
-            a.put(values.get(i));
-        }
-        if (!values.isEmpty()) {
-            editor.putString(key, a.toString());
-        } else {
-            editor.putString(key, null);
-        }
-        editor.apply();
     }
 
     public ArrayList<String> getStringArrayPref(String context, String key) {
