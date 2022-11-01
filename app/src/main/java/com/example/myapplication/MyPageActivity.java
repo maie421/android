@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -89,6 +90,11 @@ public class MyPageActivity extends AppCompatActivity {
             adapter.setArrayList(myItemArrayList);
             mypage_type = "MY_COUPON";
             adapter.notifyDataSetChanged();
+
+            //클릭색 변경
+            saleView.setTextColor(Color.rgb(200,0,0));
+            purchaseView.setTextColor(Color.rgb(0,0,0));
+            useCouponButton.setTextColor(Color.rgb(0,0,0));
         });
 
         //구매쿠폰
@@ -97,6 +103,11 @@ public class MyPageActivity extends AppCompatActivity {
             adapter.setArrayList(purchaseArrayList);
             mypage_type = "PURCHASE";
             adapter.notifyDataSetChanged();
+
+            //클릭색 변경
+            saleView.setTextColor(Color.rgb(0,0,0));
+            purchaseView.setTextColor(Color.rgb(200,0,0));
+            useCouponButton.setTextColor(Color.rgb(0,0,0));
         });
 
         //사용쿠폰
@@ -104,6 +115,10 @@ public class MyPageActivity extends AppCompatActivity {
             adapter.setArrayList(useCouponArrayList);
             mypage_type = "USE_COUPON";
             adapter.notifyDataSetChanged();
+            //클릭색 변경
+            saleView.setTextColor(Color.rgb(0,0,0));
+            purchaseView.setTextColor(Color.rgb(0,0,0));
+            useCouponButton.setTextColor(Color.rgb(200,0,0));
         });
 
         signoutButton.setOnClickListener(view -> {
@@ -171,6 +186,7 @@ public class MyPageActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         bottomNavigationView.setSelectedItemId(R.id.my_page);
+        purchaseView.setTextColor(Color.rgb(200,0,0));
     }
     
     public ArrayList<String> getStringArrayPref(String context, String key) {
