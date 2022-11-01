@@ -3,6 +3,10 @@ package com.example.myapplication;
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 
+import static com.example.myapplication.CouponItem.purchaseAllArrayList;
+import static com.example.myapplication.CouponItem.purchaseArrayList;
+import static com.example.myapplication.MainActivity.preferences_purchase;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -27,6 +31,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class barcodeActivity extends AppCompatActivity {
@@ -39,6 +44,9 @@ public class barcodeActivity extends AppCompatActivity {
     TextView salePriceView;
     ImageView imageview;
 
+    ArrayList<String> item;
+    private SharedPreferences UseItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +58,7 @@ public class barcodeActivity extends AppCompatActivity {
 
         title = intent.getExtras().getString("title");
 
-        ArrayList<String> item = getStringArrayPref("Item", title);
+        item = getStringArrayPref("Item", title);
 
         //바코드 생성
         barCodeView.setImageBitmap(textToBarCode(item.get(1)));
@@ -67,6 +75,52 @@ public class barcodeActivity extends AppCompatActivity {
         salePriceView.setText(item.get(3));
 
         imageview.setImageBitmap(StringToBitmap(item.get(6)));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //쿠폰 사용시 구매 에서 제거
+        for (int p = 0; p < purchaseArrayList.size(); p++) {
+            if (Objects.equals(purchaseArrayList.get(p).title, titleView.getText().toString())) {
+                purchaseArrayList.remove(p);
+                break;
+            }
+        }
+        //쿠폰 전체 데이터
+        for (int p = 0; p < purchaseAllArrayList.size(); p++) {
+            if (Objects.equals(purchaseAllArrayList.get(p).title, titleView.getText().toString())) {
+                purchaseAllArrayList.remove(p);
+                break;
+            }
+        }
+        //구매 제거
+        SharedPreferences.Editor editor1 = preferences_purchase.edit();
+        editor1.remove(titleView.getText().toString());
+        editor1.commit();
+
+
+        UseItem = getSharedPreferences("UseItem", MODE_PRIVATE);
+        SharedPreferences.Editor editor_use_item = UseItem.edit();
+        setStringArrayPref("UseItem", item.get(0) , item);
+        editor_use_item.commit();
+
+        CouponItem.insertUseItemArrayList(item);
+    }
+
+    public void setStringArrayPref(String context, String key, ArrayList<String> values) {
+        SharedPreferences preferences_purchase = getSharedPreferences(context, MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences_purchase.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
     }
 
     public static Bitmap textToBarCode(String data) {

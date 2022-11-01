@@ -6,6 +6,7 @@ import static com.example.myapplication.CouponItem.getPurchaseArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
 import static com.example.myapplication.CouponItem.purchaseAllArrayList;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
+import static com.example.myapplication.CouponItem.useCouponArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +38,7 @@ public class MyPageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     TextView saleView;
     TextView purchaseView;
+    TextView useCouponButton;
     Button signoutButton;
     private SharedPreferences preferences_auto;
     private SharedPreferences preferences;
@@ -60,6 +62,7 @@ public class MyPageActivity extends AppCompatActivity {
         saleView = findViewById(R.id.forSaleView);
         purchaseView = findViewById(R.id.purchaseView);
         signoutButton = findViewById(R.id.logoutButton);
+        useCouponButton = findViewById(R.id.useCoupon);
 
         preferences = getSharedPreferences("User", MODE_PRIVATE);
         preferences_auto = getSharedPreferences("AutoUser", MODE_PRIVATE);
@@ -80,18 +83,29 @@ public class MyPageActivity extends AppCompatActivity {
         getPurchaseArrayList(id);
         adapter.setArrayList(purchaseArrayList);
 
+        //판매큐폰
         saleView.setOnClickListener(view -> {
             getMyArrayList(id);
             adapter.setArrayList(myItemArrayList);
             mypage_type = "MY_COUPON";
             adapter.notifyDataSetChanged();
         });
+
+        //구매쿠폰
         purchaseView.setOnClickListener(view -> {
             getPurchaseArrayList(id);
             adapter.setArrayList(purchaseArrayList);
             mypage_type = "PURCHASE";
             adapter.notifyDataSetChanged();
         });
+
+        //사용쿠폰
+        useCouponButton.setOnClickListener(view -> {
+            adapter.setArrayList(useCouponArrayList);
+            mypage_type = "USE_COUPON";
+            adapter.notifyDataSetChanged();
+        });
+
         signoutButton.setOnClickListener(view -> {
             SharedPreferences.Editor editor_auto = preferences_auto.edit();
             SharedPreferences.Editor editor = preferences.edit();

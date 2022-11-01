@@ -7,9 +7,11 @@ import static com.example.myapplication.CouponItem.itemArrayList;
 import static com.example.myapplication.CouponItem.myItemArrayList;
 import static com.example.myapplication.CouponItem.purchaseAllArrayList;
 import static com.example.myapplication.CouponItem.purchaseArrayList;
+import static com.example.myapplication.CouponItem.useCouponArrayList;
 import static com.example.myapplication.MainActivity.mainAdapter;
 import static com.example.myapplication.MainActivity.preferences;
 import static com.example.myapplication.MainActivity.preferences_purchase;
+import static com.example.myapplication.MainActivity.preferences_use_item;
 import static com.example.myapplication.MyPageActivity.adapter;
 import static com.example.myapplication.MyPageActivity.mypage_type;
 
@@ -68,7 +70,7 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
 
                 myItemArrayList.remove(position);
                 mainAdapter.notifyDataSetChanged();
-            } else {
+            } else if (Objects.equals(mypage_type, "PURCHASE")) {
                 for (int p = 0; p < purchaseArrayList.size(); p++) {
                     if (Objects.equals(purchaseArrayList.get(p).title, titleView.getText().toString())) {
                         purchaseArrayList.remove(p);
@@ -84,6 +86,17 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
                 SharedPreferences.Editor editor1 = preferences_purchase.edit();
                 editor1.remove(titleView.getText().toString());
                 editor1.commit();
+            } else if (Objects.equals(mypage_type, "USE_COUPON")) {
+                for (int p = 0; p < useCouponArrayList.size(); p++) {
+                    if (Objects.equals(useCouponArrayList.get(p).title, titleView.getText().toString())) {
+                        useCouponArrayList.remove(p);
+                        break;
+                    }
+                }
+
+                SharedPreferences.Editor editor1 = preferences_use_item.edit();
+                editor1.remove(titleView.getText().toString());
+                editor1.commit();
             }
             adapter.notifyItemRemoved(position);
         });
@@ -91,7 +104,7 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
         imageview.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), barcodeActivity.class);
             intent.putExtra("title", titleView.getText().toString());
-            Log.d("TAG",titleView.getText().toString());
+            Log.d("TAG", titleView.getText().toString());
             view.getContext().startActivity(intent);
         });
     }

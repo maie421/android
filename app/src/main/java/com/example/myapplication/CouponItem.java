@@ -25,6 +25,7 @@ public class CouponItem {
     public static ArrayList<CouponItem> purchaseArrayList = new ArrayList<>();
     public static ArrayList<CouponItem> purchaseAllArrayList = new ArrayList<>();
     public static ArrayList<CouponItem> myItemArrayList = new ArrayList<>();
+    public static ArrayList<CouponItem> useCouponArrayList = new ArrayList<>();
 
     public CouponItem(String title, String company, String price, String salePrice, String type, String member_idx, Bitmap bitmap, String datetime) {
         this.title = title;
@@ -79,6 +80,10 @@ public class CouponItem {
 
     public static void insertPurchaseArrayList(ArrayList<String> item) {
         purchaseAllArrayList.add(new CouponItem(item.get(0), item.get(1), item.get(2), item.get(3),item.get(4),item.get(5),StringToBitmap(item.get(6)),item.get(7)));
+    }
+
+    public static void insertUseItemArrayList(ArrayList<String> item) {
+        useCouponArrayList.add(new CouponItem(item.get(0), item.get(1), item.get(2), item.get(3),item.get(4),item.get(5),StringToBitmap(item.get(6)),item.get(7)));
     }
 
     public static Bitmap StringToBitmap(String encodedString) {

@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     public static GridViewAdapter mainAdapter;
     public static SharedPreferences preferences_purchase;
     public static SharedPreferences preferences;
+    public static SharedPreferences preferences_use_item;
 
     Handler handler = new Handler();
 
@@ -175,9 +176,14 @@ public class MainActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("Item", MODE_PRIVATE);
         preferences_purchase = getSharedPreferences("Purchase", MODE_PRIVATE);
+        preferences_use_item = getSharedPreferences("UseItem", MODE_PRIVATE);
         Map<String,?> keys = preferences.getAll();
+        Map<String,?> use_item_keys = preferences_use_item.getAll();
         for(Map.Entry<String,?> entry : keys.entrySet()){
             CouponItem.insertItemArrayList(getStringArrayPref("Item",entry.getKey()));
+        }
+        for(Map.Entry<String,?> use_item_entry : use_item_keys.entrySet()){
+            CouponItem.insertUseItemArrayList(getStringArrayPref("Item",use_item_entry.getKey()));
         }
         //쿠폰 데이터 세팅
         CouponItem.getItemArrayList();
