@@ -102,10 +102,12 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
         });
 
         imageview.setOnClickListener(view -> {
-            Intent intent = new Intent(view.getContext(), barcodeActivity.class);
-            intent.putExtra("title", titleView.getText().toString());
-            Log.d("TAG", titleView.getText().toString());
-            view.getContext().startActivity(intent);
+            if (Objects.equals(mypage_type, "PURCHASE")) {
+                Intent intent = new Intent(view.getContext(), barcodeActivity.class);
+                intent.putExtra("title", titleView.getText().toString());
+                Log.d("TAG", titleView.getText().toString());
+                view.getContext().startActivity(intent);
+            }
         });
     }
 
