@@ -63,7 +63,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         init(); //객체 정의
     }
-
+    //쿠폰 마감시간
     private void dateTimeHandler() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -157,6 +157,7 @@ public class DetailActivity extends AppCompatActivity {
             Intent mapIntent = new Intent(getApplicationContext(), MapActivity.class);
             mapIntent.putExtra("id",id); /*송신*/
             mapIntent.putExtra("place",item.get(1)); /*송신*/
+            mapIntent.putExtra("title",item.get(0)); /*송신*/
             startActivity(mapIntent);
         });
 

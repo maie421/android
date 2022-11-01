@@ -45,14 +45,13 @@
         android:id="@+id/useCoupon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="115dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="120dp"
         android:text="사용 쿠폰"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/forSaleView"
-        app:layout_constraintTop_toBottomOf="@+id/logoutButton" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
         android:id="@+id/purchaseView"
