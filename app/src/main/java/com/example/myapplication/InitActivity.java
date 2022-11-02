@@ -33,6 +33,7 @@ public class InitActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     private SharedPreferences preferences_auto;
     private static final String TAG = "TAG";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class InitActivity extends AppCompatActivity {
         Button joinBtn = findViewById(R.id.join);
         joinBtn.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+            intent.putExtra("id", ""); /*송신*/
             startActivity(intent);
         });
 
@@ -87,14 +89,22 @@ public class InitActivity extends AppCompatActivity {
         UserApiClient.getInstance().me((user, throwable) -> {
             //성공
             if (user != null) {
-                SharedPreferences.Editor editor_auto = preferences_auto.edit();
-                editor_auto.putString("login_id",user.getKakaoAccount().getProfile().getNickname());
-                editor_auto.commit();
+                preferences = getSharedPreferences("User", MODE_PRIVATE);
+                //회원가입이 되어 있을 경우
+                if (preferences.getString(user.getKakaoAccount().getProfile().getNickname(), "").equals("")) {
+                    Intent intent = new Intent(getApplicationContext(), JoinActivity.class);
+                    intent.putExtra("id", user.getKakaoAccount().getProfile().getNickname()); /*송신*/
+                    startActivity(intent);
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                finishAffinity();
-                intent.putExtra("id", user.getKakaoAccount().getProfile().getNickname()); /*송신*/
-                startActivity(intent);
+                } else {
+                    SharedPreferences.Editor editor_auto = preferences_auto.edit();
+                    editor_auto.putString("login_id", user.getKakaoAccount().getProfile().getNickname());
+                    editor_auto.commit();
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("id", user.getKakaoAccount().getProfile().getNickname()); /*송신*/
+                    startActivity(intent);
+                }
             }
             if (throwable != null) {
                 Log.w(TAG, "invoke: " + throwable.getLocalizedMessage());
@@ -102,6 +112,7 @@ public class InitActivity extends AppCompatActivity {
             return null;
         });
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -114,11 +125,11 @@ public class InitActivity extends AppCompatActivity {
         }
 
         //자동 로그인
-        preferences = getSharedPreferences("AutoUser", MODE_PRIVATE);
-        if (preferences.getString("login_id", null) != null) {
+        preferences_auto = getSharedPreferences("AutoUser", MODE_PRIVATE);
+        if (preferences_auto.getString("login_id", null) != null) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             finishAffinity();
-            intent.putExtra("id", preferences.getString("login_id", null)); /*송신*/
+            intent.putExtra("id", preferences_auto.getString("login_id", null)); /*송신*/
             startActivity(intent);
             return;
         }
